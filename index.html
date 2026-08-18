@@ -4,9 +4,135 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>فرصتي</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #1769aa;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .search {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 18px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      color: #1769aa;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #1769aa;
+      color: white;
+      text-decoration: none;
+      padding: 11px 20px;
+      border-radius: 8px;
+    }
+
+    .button:hover {
+      background: #0d4f80;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+      background: #17202a;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>مرحبًا بك في فرصتي</h1>
-  <p>منصة فرصتي لاكتشاف الفرص المناسبة لك.</p>
+
+  <header>
+    <h1>فرصتي</h1>
+    <p>اكتشف فرصتك وابدأ مستقبلك</p>
+  </header>
+
+  <main class="container">
+
+    <section class="search">
+      <input type="text" placeholder="🔎 ابحث عن فرصة..." id="searchInput">
+    </section>
+
+    <section class="card">
+      <h2>💼 فرص العمل</h2>
+      <p>اكتشف فرص العمل المناسبة لك وابحث عن وظيفتك القادمة.</p>
+      <a href="#" class="button">استكشف الفرص</a>
+    </section>
+
+    <section class="card">
+      <h2>🎓 فرص التدريب</h2>
+      <p>طور مهاراتك من خلال التدريب والتكوين واكتسب خبرة جديدة.</p>
+      <a href="#" class="button">اكتشف التدريب</a>
+    </section>
+
+    <section class="card">
+      <h2>🚀 المشاريع</h2>
+      <p>أفكار وفرص تساعدك على إنشاء مشروعك وتحقيق دخل.</p>
+      <a href="#" class="button">اكتشف المشاريع</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 فرصتي - جميع الحقوق محفوظة</p>
+  </footer>
+
 </body>
-</html>
+  </html>
