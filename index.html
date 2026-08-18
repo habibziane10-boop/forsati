@@ -14,14 +14,14 @@
     }
 
     body {
-      background: #f5f7fb;
+      background: #f4f7fb;
       color: #222;
     }
 
     header {
-      background: #1769aa;
+      background: #0d6efd;
       color: white;
-      padding: 20px;
+      padding: 25px 15px;
       text-align: center;
     }
 
@@ -34,65 +34,127 @@
       font-size: 16px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
+    nav {
+      background: white;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      flex-wrap: wrap;
     }
 
-    .search {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    nav a {
+      text-decoration: none;
+      color: #0d6efd;
+      font-weight: bold;
+      padding: 8px 14px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: #666;
       margin-bottom: 25px;
     }
 
+    .search {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      gap: 8px;
+    }
+
     .search input {
-      width: 100%;
+      flex: 1;
       padding: 14px;
       border: 1px solid #ddd;
-      border-radius: 10px;
+      border-radius: 8px;
       font-size: 16px;
+    }
+
+    button {
+      border: none;
+      background: #0d6efd;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #0957c7;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 25px 0;
+      font-size: 25px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
     .card {
       background: white;
-      padding: 20px;
-      margin-bottom: 18px;
-      border-radius: 15px;
+      padding: 22px;
+      border-radius: 12px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     }
 
-    .card h2 {
-      color: #1769aa;
+    .card h3 {
+      color: #0d6efd;
       margin-bottom: 10px;
     }
 
     .card p {
-      line-height: 1.8;
-      margin-bottom: 12px;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 15px;
     }
 
-    .button {
-      display: inline-block;
-      background: #1769aa;
-      color: white;
-      text-decoration: none;
-      padding: 11px 20px;
-      border-radius: 8px;
-    }
-
-    .button:hover {
-      background: #0d4f80;
+    .about {
+      background: white;
+      margin-top: 35px;
+      padding: 30px;
+      border-radius: 12px;
+      line-height: 1.9;
     }
 
     footer {
+      margin-top: 40px;
+      background: #172033;
+      color: white;
       text-align: center;
       padding: 25px;
-      margin-top: 30px;
-      background: #17202a;
-      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .search {
+        flex-direction: column;
+      }
+
+      .hero h2 {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
@@ -104,35 +166,90 @@
     <p>اكتشف فرصتك وابدأ مستقبلك</p>
   </header>
 
-  <main class="container">
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#opportunities">الفرص</a>
+    <a href="#about">عن فرصتي</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
 
-    <section class="search">
-      <input type="text" placeholder="🔎 ابحث عن فرصة..." id="searchInput">
-    </section>
+  <section class="hero" id="home">
+    <h2>ابحث عن فرصتك الآن</h2>
+    <p>فرص عمل، تدريب، مشاريع وفرص جديدة في مكان واحد.</p>
 
-    <section class="card">
-      <h2>💼 فرص العمل</h2>
-      <p>اكتشف فرص العمل المناسبة لك وابحث عن وظيفتك القادمة.</p>
-      <a href="#" class="button">استكشف الفرص</a>
-    </section>
+    <div class="search">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="اكتب اسم الفرصة..."
+      >
+      <button onclick="searchOpportunities()">بحث</button>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>🎓 فرص التدريب</h2>
-      <p>طور مهاراتك من خلال التدريب والتكوين واكتسب خبرة جديدة.</p>
-      <a href="#" class="button">اكتشف التدريب</a>
-    </section>
+  <main class="container" id="opportunities">
 
-    <section class="card">
-      <h2>🚀 المشاريع</h2>
-      <p>أفكار وفرص تساعدك على إنشاء مشروعك وتحقيق دخل.</p>
-      <a href="#" class="button">اكتشف المشاريع</a>
+    <h2 class="section-title">أحدث الفرص</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>فرص عمل</h3>
+        <p>اكتشف وظائف وفرص عمل مناسبة لمهاراتك وخبرتك.</p>
+        <button onclick="showMessage('فرص العمل')">استكشف</button>
+      </div>
+
+      <div class="card">
+        <h3>تدريب وتكوين</h3>
+        <p>طوّر مهاراتك من خلال فرص التدريب والتكوين المتاحة.</p>
+        <button onclick="showMessage('التدريب والتكوين')">استكشف</button>
+      </div>
+
+      <div class="card">
+        <h3>مشاريع</h3>
+        <p>أفكار ومشاريع تساعدك على بناء مستقبلك وتحقيق دخل.</p>
+        <button onclick="showMessage('المشاريع')">استكشف</button>
+      </div>
+
+      <div class="card">
+        <h3>منح وفرص تعليمية</h3>
+        <p>ابحث عن فرص تعليمية ومنح تساعدك في تطوير مستقبلك.</p>
+        <button onclick="showMessage('المنح التعليمية')">استكشف</button>
+      </div>
+
+    </div>
+
+    <section class="about" id="about">
+      <h2>عن فرصتي</h2>
+      <p>
+        فرصتي منصة تهدف إلى جمع الفرص المختلفة في مكان واحد،
+        ومساعدة الشباب على الوصول إلى فرص العمل والتدريب والمشاريع
+        والتعليم بسهولة.
+      </p>
     </section>
 
   </main>
 
-  <footer>
+  <footer id="contact">
     <p>© 2026 فرصتي - جميع الحقوق محفوظة</p>
+    <p>منصة لصناعة الفرص والمستقبل</p>
   </footer>
 
+  <script>
+    function showMessage(type) {
+      alert("سيتم عرض " + type + " قريبًا في منصة فرصتي.");
+    }
+
+    function searchOpportunities() {
+      const input = document.getElementById("searchInput").value.trim();
+
+      if (input === "") {
+        alert("اكتب اسم الفرصة التي تبحث عنها.");
+      } else {
+        alert("جاري البحث عن: " + input);
+      }
+    }
+  </script>
+
 </body>
-  </html>
+    </html>
