@@ -1,255 +1,1329 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>فرصتي</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+<title>فرصتي | منصة فرص العمل</title>
+
+<style>
+
+/* =========================
+   الإعدادات العامة
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Tahoma, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5f7fb;
+    color: #1f2937;
+    line-height: 1.7;
+}
+
+/* =========================
+   الهيدر
+========================= */
+
+header {
+    background: linear-gradient(135deg, #0759d8, #1687ff);
+    color: white;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logo span {
+    color: #ffe066;
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.nav-links button {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+.nav-links button:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* =========================
+   الصفحة الرئيسية
+========================= */
+
+.hero {
+    background:
+        linear-gradient(
+            rgba(5, 65, 155, 0.88),
+            rgba(14, 113, 220, 0.88)
+        ),
+        linear-gradient(135deg, #0759d8, #1687ff);
+
+    color: white;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #ffe066;
+}
+
+.hero p {
+    font-size: 19px;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    max-width: 850px;
+    margin: auto;
+    background: white;
+    padding: 15px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr auto;
+    gap: 10px;
+}
+
+.search-box input,
+.search-box select {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 14px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+.primary-btn {
+    border: none;
+    background: #0759d8;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.primary-btn:hover {
+    background: #0447ad;
+}
+
+/* =========================
+   الحاوية
+========================= */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    color: #0759d8;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #6b7280;
+}
+
+/* =========================
+   الإحصائيات
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 50px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.stat-card .icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.stat-card h3 {
+    color: #0759d8;
+    font-size: 27px;
+}
+
+.stat-card p {
+    color: #6b7280;
+}
+
+/* =========================
+   الوظائف
+========================= */
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.job-card {
+    background: white;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    border: 1px solid #eef0f4;
+    transition: 0.25s;
+}
+
+.job-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.11);
+}
+
+.job-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.job-title {
+    color: #0759d8;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.badge {
+    background: #e8f1ff;
+    color: #0759d8;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.job-company {
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.job-info {
+    color: #667085;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.job-description {
+    margin: 13px 0;
+    color: #4b5563;
+}
+
+.job-footer {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.job-footer button {
+    flex: 1;
+}
+
+.apply-btn {
+    background: #0759d8;
+    color: white;
+    border: none;
+    padding: 11px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #eef2f7;
+    color: #333;
+    border: none;
+    padding: 11px 14px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+/* =========================
+   المجالات
+========================= */
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.category {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    transition: 0.2s;
+}
+
+.category:hover {
+    transform: translateY(-3px);
+    background: #f1f6ff;
+}
+
+.category-icon {
+    font-size: 38px;
+    margin-bottom: 8px;
+}
+
+.category h3 {
+    color: #0759d8;
+}
+
+/* =========================
+   قسم الإعلان
+========================= */
+
+.post-section {
+    background: linear-gradient(135deg, #ffffff, #edf5ff);
+    border-radius: 20px;
+    padding: 35px;
+    margin-top: 50px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 13px;
+    border: 1px solid #d7dce3;
+    border-radius: 9px;
+    outline: none;
+    font-size: 15px;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* =========================
+   تسجيل الدخول
+========================= */
+
+.login-box {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.login-box input {
+    width: 100%;
+    padding: 13px;
+    margin: 7px 0 14px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+}
+
+.login-box button {
+    width: 100%;
+}
+
+/* =========================
+   النوافذ
+========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 2000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: white;
+    max-width: 550px;
+    margin: 60px auto;
+    border-radius: 18px;
+    padding: 28px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    left: 18px;
+    top: 12px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #555;
+}
+
+.modal-content h2 {
+    color: #0759d8;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   التنبيهات
+========================= */
+
+.toast {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #1f2937;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    z-index: 5000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   الفوتر
+========================= */
+
+footer {
+    background: #111827;
+    color: white;
+    margin-top: 50px;
+    padding: 45px 20px 20px;
+}
+
+.footer-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 30px;
+}
+
+.footer-column h3 {
+    margin-bottom: 12px;
+    color: #60a5fa;
+}
+
+.footer-column p,
+.footer-column li {
+    color: #cbd5e1;
+    margin: 6px 0;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.copyright {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid #374151;
+    text-align: center;
+    color: #9ca3af;
+}
+
+/* =========================
+   الهاتف
+========================= */
+
+@media (max-width: 900px) {
+
+    .jobs-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    body {
-      background: #f4f7fb;
-      color: #222;
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
     }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 650px) {
 
     header {
-      background: #0d6efd;
-      color: white;
-      padding: 25px 15px;
-      text-align: center;
+        padding: 12px;
     }
 
-    header h1 {
-      font-size: 32px;
-      margin-bottom: 8px;
+    .navbar {
+        flex-direction: column;
     }
 
-    header p {
-      font-size: 16px;
-    }
-
-    nav {
-      background: white;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #0d6efd;
-      font-weight: bold;
-      padding: 8px 14px;
+    .nav-links {
+        justify-content: center;
     }
 
     .hero {
-      text-align: center;
-      padding: 45px 20px;
+        padding: 45px 15px;
     }
 
-    .hero h2 {
-      font-size: 28px;
-      margin-bottom: 15px;
+    .hero h1 {
+        font-size: 32px;
     }
 
-    .hero p {
-      color: #666;
-      margin-bottom: 25px;
+    .search-box {
+        grid-template-columns: 1fr;
     }
 
-    .search {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      gap: 8px;
+    .jobs-grid {
+        grid-template-columns: 1fr;
     }
 
-    .search input {
-      flex: 1;
-      padding: 14px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 16px;
+    .stats {
+        grid-template-columns: 1fr 1fr;
     }
 
-    button {
-      border: none;
-      background: #0d6efd;
-      color: white;
-      padding: 14px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
+    .categories {
+        grid-template-columns: 1fr 1fr;
     }
 
-    button:hover {
-      background: #0957c7;
+    .form-grid {
+        grid-template-columns: 1fr;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
+    .form-group.full {
+        grid-column: auto;
     }
 
-    .section-title {
-      text-align: center;
-      margin: 25px 0;
-      font-size: 25px;
+    .footer-grid {
+        grid-template-columns: 1fr;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+}
 
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
-
-    .card h3 {
-      color: #0d6efd;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #666;
-      line-height: 1.7;
-      margin-bottom: 15px;
-    }
-
-    .about {
-      background: white;
-      margin-top: 35px;
-      padding: 30px;
-      border-radius: 12px;
-      line-height: 1.9;
-    }
-
-    footer {
-      margin-top: 40px;
-      background: #172033;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
-
-    @media (max-width: 600px) {
-      .search {
-        flex-direction: column;
-      }
-
-      .hero h2 {
-        font-size: 24px;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>فرصتي</h1>
-    <p>اكتشف فرصتك وابدأ مستقبلك</p>
-  </header>
+<!-- =========================
+     الهيدر
+========================= -->
 
-  <nav>
-    <a href="#home">الرئيسية</a>
-    <a href="#opportunities">الفرص</a>
-    <a href="#about">عن فرصتي</a>
-    <a href="#contact">تواصل معنا</a>
-  </nav>
+<header>
 
-  <section class="hero" id="home">
-    <h2>ابحث عن فرصتك الآن</h2>
-    <p>فرص عمل، تدريب، مشاريع وفرص جديدة في مكان واحد.</p>
+<div class="navbar">
 
-    <div class="search">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="اكتب اسم الفرصة..."
-      >
-      <button onclick="searchOpportunities()">بحث</button>
-    </div>
-  </section>
+<div class="logo" onclick="goHome()">
+    فرص<span>تي</span>
+</div>
 
-  <main class="container" id="opportunities">
+<ul class="nav-links">
 
-    <h2 class="section-title">أحدث الفرص</h2>
+<li>
+<button onclick="goHome()">الرئيسية</button>
+</li>
 
-    <div class="cards">
+<li>
+<button onclick="showJobs()">الوظائف</button>
+</li>
 
-      <div class="card">
-        <h3>فرص عمل</h3>
-        <p>اكتشف وظائف وفرص عمل مناسبة لمهاراتك وخبرتك.</p>
-        <button onclick="showMessage('فرص العمل')">استكشف</button>
-      </div>
+<li>
+<button onclick="showCategories()">المجالات</button>
+</li>
 
-      <div class="card">
-        <h3>تدريب وتكوين</h3>
-        <p>طوّر مهاراتك من خلال فرص التدريب والتكوين المتاحة.</p>
-        <button onclick="showMessage('التدريب والتكوين')">استكشف</button>
-      </div>
+<li>
+<button onclick="openPostModal()">نشر وظيفة</button>
+</li>
 
-      <div class="card">
-        <h3>مشاريع</h3>
-        <p>أفكار ومشاريع تساعدك على بناء مستقبلك وتحقيق دخل.</p>
-        <button onclick="showMessage('المشاريع')">استكشف</button>
-      </div>
+<li>
+<button onclick="openLogin()">دخول</button>
+</li>
 
-      <div class="card">
-        <h3>منح وفرص تعليمية</h3>
-        <p>ابحث عن فرص تعليمية ومنح تساعدك في تطوير مستقبلك.</p>
-        <button onclick="showMessage('المنح التعليمية')">استكشف</button>
-      </div>
+</ul>
 
-    </div>
+</div>
 
-    <section class="about" id="about">
-      <h2>عن فرصتي</h2>
-      <p>
-        فرصتي منصة تهدف إلى جمع الفرص المختلفة في مكان واحد،
-        ومساعدة الشباب على الوصول إلى فرص العمل والتدريب والمشاريع
-        والتعليم بسهولة.
-      </p>
-    </section>
+</header>
 
-  </main>
 
-  <footer id="contact">
-    <p>© 2026 فرصتي - جميع الحقوق محفوظة</p>
-    <p>منصة لصناعة الفرص والمستقبل</p>
-  </footer>
+<!-- =========================
+     الرئيسية
+========================= -->
 
-  <script>
-    function showMessage(type) {
-      alert("سيتم عرض " + type + " قريبًا في منصة فرصتي.");
-    }
+<section class="hero" id="home">
 
-    function searchOpportunities() {
-      const input = document.getElementById("searchInput").value.trim();
+<h1>
+ابحث عن <span>فرصتك</span> اليوم
+</h1>
 
-      if (input === "") {
-        alert("اكتب اسم الفرصة التي تبحث عنها.");
-      } else {
-        alert("جاري البحث عن: " + input);
-      }
-    }
-  </script>
+<p>
+فرصتي تساعدك على اكتشاف فرص العمل المناسبة لك بسهولة
+</p>
 
-</body>
-    </html>
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="ابحث عن وظيفة مثل: محاسب، سائق، مبرمج..."
+>
+
+<select id="searchCategory">
+
+<option value="">كل المجالات</option>
+
+<option value="تقنية">التقنية</option>
+
+<option value="تجارة">التجارة</option>
+
+<option value="تعليم">التعليم</option>
+
+<option value="صحة">الصحة</option>
+
+<option value="نقل">النقل</option>
+
+<option value="خدمات">الخدمات</option>
+
+</select>
+
+<button class="primary-btn" onclick="searchJobs()">
+🔎 بحث
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     المحتوى
+========================= -->
+
+<main class="container">
+
+
+<!-- الإحصائيات -->
+
+<section>
+
+<div class="section-title">
+
+<h2>فرصتي بالأرقام</h2>
+
+<p>نسعى إلى جمع أفضل فرص العمل في مكان واحد</p>
+
+</div>
+
+<div class="stats">
+
+<div class="stat-card">
+<div class="icon">💼</div>
+<h3 id="jobsCount">6</h3>
+<p>فرصة عمل</p>
+</div>
+
+<div class="stat-card">
+<div class="icon">🏢</div>
+<h3>120+</h3>
+<p>شركة</p>
+</div>
+
+<div class="stat-card">
+<div class="icon">👥</div>
+<h3>2500+</h3>
+<p>باحث عن عمل</p>
+</div>
+
+<div class="stat-card">
+<div class="icon">📍</div>
+<h3>48</h3>
+<p>ولاية</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- الوظائف -->
+
+<section id="jobsSection">
+
+<div class="section-title">
+
+<h2>🔥 أحدث فرص العمل</h2>
+
+<p>اكتشف أحدث الوظائف المنشورة</p>
+
+</div>
+
+<div class="jobs-grid" id="jobsList">
+
+
+<!-- وظيفة 1 -->
+
+<div class="job-card" data-title="مطور مواقع" data-category="تقنية">
+
+<div class="job-top">
+
+<div>
+<h3 class="job-title">مطور مواقع</h3>
+<p class="job-company">شركة تقنية</p>
+</div>
+
+<span class="badge">جديد</span>
+
+</div>
+
+<p class="job-info">📍 الجزائر العاصمة</p>
+
+<p class="job-info">💰 الراتب: حسب الخبرة</p>
+
+<p class="job-description">
+مطلوب مطور مواقع لديه خبرة في HTML وCSS وJavaScript.
+</p>
+
+<div class="job-footer">
+
+<button class="apply-btn" onclick="applyJob('مطور مواقع')">
+التقدم للوظيفة
+</button>
+
+<button class="save-btn" onclick="saveJob(this)">
+♡
+</button>
+
+</div>
+
+</div>
+
+
+<!-- وظيفة 2 -->
+
+<div class="job-card" data-title="موظف مبيعات" data-category="تجارة">
+
+<div class="job-top">
+
+<div>
+<h3 class="job-title">موظف مبيعات</h3>
+<p class="job-company">شركة تجارية</p>
+</div>
+
+<span class="badge">جديد</span>
+
+</div>
+
+<p class="job-info">📍 وهران</p>
+
+<p class="job-info">💰 الراتب: قابل للتفاوض</p>
+
+<p class="job-description">
+نبحث عن موظف مبيعات لديه مهارات التواصل والتعامل مع الزبائن.
+</p>
+
+<div class="job-footer">
+
+<button class="apply-btn" onclick="applyJob('موظف مبيعات')">
+التقدم للوظيفة
+</button>
+
+<button class="save-btn" onclick="saveJob(this)">
+♡
+</button>
+
+</div>
+
+</div>
+
+
+<!-- وظيفة 3 -->
+
+<div class="job-card" data-title="أستاذ" data-category="تعليم">
+
+<div class="job-top">
+
+<div>
+<h3 class="job-title">أستاذ</h3>
+<p class="job-company">مؤسسة تعليمية</p>
+</div>
+
+<span class="badge">مميز</span>
+
+</div>
+
+<p class="job-info">📍 بومرداس</p>
+
+<p class="job-info">💰 الراتب: حسب الخبرة</p>
+
+<p class="job-description">
+فرصة لأستاذ لديه خبرة في التدريس والتعامل مع الطلاب.
+</p>
+
+<div class="job-footer">
+
+<button class="apply-btn" onclick="applyJob('أستاذ')">
+التقدم للوظيفة
+</button>
+
+<button class="save-btn" onclick="saveJob(this)">
+♡
+</button>
+
+</div>
+
+</div>
+
+
+<!-- وظيفة 4 -->
+
+<div class="job-card" data-title="سائق" data-category="نقل">
+
+<div class="job-top">
+
+<div>
+<h3 class="job-title">سائق</h3>
+<p class="job-company">شركة خدمات</p>
+</div>
+
+<span class="badge">متاح</span>
+
+</div>
+
+<p class="job-info">📍 تيبازة</p>
+
+<p class="job-info">💰 الراتب: حسب الاتفاق</p>
+
+<p class="job-description">
+مطلوب سائق للعمل ضمن فريق شركة خدمات.
+</p>
+
+<div class="job-footer">
+
+<button class="apply-btn" onclick="applyJob('سائق')">
+التقدم للوظيفة
+</button>
+
+<button class="save-btn" onclick="saveJob(this)">
+♡
+</button>
+
+</div>
+
+</div>
+
+
+<!-- وظيفة 5 -->
+
+<div class="job-card" data-title="عامل خدمات" data-category="خدمات">
+
+<div class="job-top">
+
+<div>
+<h3 class="job-title">عامل خدمات</h3>
+<p class="job-company">مؤسسة خاصة</p>
+</div>
+
+<span class="badge">متاح</span>
+
+</div>
+
+<p class="job-info">📍 البليدة</p>
+
+<p class="job-info">💰 الراتب: شهري</p>
+
+<p class="job-description">
+فرصة عمل ضمن مؤسسة خاصة في مجال الخدمات.
+</p>
+
+<div class="job-footer">
+
+<button class="apply-btn" onclick="applyJob('عامل خدمات')">
+التقدم للوظيفة
+</button>
+
+<button class="save-btn" onclick="saveJob(this)">
+♡
+</button>
+
+</div>
+
+</div>
+
+
+<!-- وظيفة 6 -->
+
+<div class="job-card" data-title="ممرض" data-category="صحة">
+
+<div class="job-top">
+
+<div>
+<h3 class="job-title">ممرض</h3>
+<p class="job-company">مركز صحي</p>
+</div>
+
+<span class="badge">جديد</span>
+
+</div>
+
+<p class="job-info">📍 الجزائر</p>
+
+<p class="job-info">💰 الراتب: حسب الخبرة</p>
+
+<p class="job-description">
+مطلوب ممرض للعمل ضمن فريق طبي.
+</p>
+
+<div class="job-footer">
+
+<button class="apply-btn" onclick="applyJob('ممرض')">
+التقدم للوظيفة
+</button>
+
+<button class="save-btn" onclick="saveJob(this)">
+♡
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- المجالات -->
+
+<section id="categoriesSection" style="margin-top:70px;">
+
+<div class="section-title">
+
+<h2>📂 تصفح حسب المجال</h2>
+
+<p>اختر المجال الذي تبحث فيه عن فرصة</p>
+
+</div>
+
+<div class="categories">
+
+<div class="category" onclick="selectCategory('تقنية')">
+<div class="category-icon">💻</div>
+<h3>التقنية</h3>
+</div>
+
+<div class="category" onclick="selectCategory('تجارة')">
+<div class="category-icon">🛒</div>
+<h3>التجارة</h3>
+</div>
+
+<div class="category" onclick="selectCategory('تعليم')">
+<div class="category-icon">📚</div>
+<h3>التعليم</h3>
+</div>
+
+<div class="category" onclick="selectCategory('صحة')">
+<div class="category-icon">🏥</div>
+<h3>الصحة</h3>
+</div>
+
+<div class="category" onclick="selectCategory('نقل')">
+<div class="category-icon">🚗</div>
+<h3>النقل</h3>
+</div>
+
+<div class="category" onclick="selectCategory('خدمات')">
+<div class="category-icon">🛠️</div>
+<h3>الخدمات</h3>
+</div>
+
+<div class="category" onclick="selectCategory('تجارة')">
+<div class="category-icon">🏪</div>
+<h3>المبيعات</h3>
+</div>
+
+<div class="category" onclick="selectCategory('أخرى')">
+<div class="category-icon">📌</div>
+<h3>مجالات أخرى</h3>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- الإعلان -->
+
+<section class="post-section">
+
+<div class="section-title">
+
+<h2>📢 هل لديك فرصة عمل؟</h2>
+
+<p>
+انشر إعلانك ليصل إلى الباحثين عن العمل
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<button class="primary-btn" onclick="openPostModal()">
+➕ نشر فرصة عمل
+</button>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     نافذة نشر وظيفة
+========================= -->
+
+<div class="modal" id="postModal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal('postModal')">
+×
+</span>
+
+<h2>📢 نشر فرصة عمل</h2>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>اسم الوظيفة</label>
+
+<input
+type="text"
+id="newJobTitle"
+placeholder="مثال: محاسب"
+>
+
+</div>
+
+<div class="form-group">
+
+<label>اسم الشركة</label>
+
+<input
+type="text"
+id="newCompany"
+placeholder="اسم الشركة"
+>
+
+</div>
+
+<div class="form-group">
+
+<label>الولاية</label>
+
+<select id="newLocation">
+
+<option value="">اختر الولاية</option>
+<option>الجزائر</option>
+<option>بومرداس</option>
+<option>تيبازة</option>
+<option>البليدة</option>
+<option>وهران</option>
+<option>قسنطينة</option>
+<option>سطيف</option>
+<option>عنابة</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>المجال</label>
+
+<select id="newCategory">
+
+<option value="">اختر المجال</option>
+<option value="تقنية">التقنية</option>
+<option value="تجارة">التجارة</option>
+<option value="تعليم">التعليم</option>
+<option value="صحة">الصحة</option>
+<option value="نقل">النقل</option>
+<option value="خدمات">الخدمات</option>
+<option value="أخرى">أخرى</option>
+
+</select>
+
+</div>
+
+<div class="form-group full">
+
+<label>وصف الوظيفة</label>
+
+<textarea
+id="newDescription"
+placeholder="اكتب تفاصيل الوظيفة..."
+></textarea>
+
+</div>
+
+<div class="form-group full">
+
+<button class="primary-btn" onclick="publishJob()">
+🚀 نشر الفرصة
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     تسجيل الدخول
+========================= -->
+
+<div class="modal" id="loginModal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal('loginModal')">
+×
+</span>
+
+<div class="login-box">
+
+<h2>👤 تسجيل الدخول</h2>
+
+<label>البريد الإلكتروني</label>
+
+<input
+type="email"
+id="email"
+placeholder="example@email.com"
+>
+
+<label>كلمة المرور</label>
+
+<input
+type="password"
+id="password"
+placeholder="كلمة المرور"
+>
+
+<button class="primary-btn" onclick="loginUser()">
+دخول
+</button>
+
+<p style="text-align:center;margin-top:15px;color:#777;">
+هذه نسخة تجريبية من الموقع.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     نافذة التقديم
+========================= -->
+
+<div class="modal" id="applyModal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal('applyModal')">
+×
+</span>
+
+<h2>📩 التقدم للوظيفة</h2>
+
+<p id="selectedJob" style="margin-bottom:20px;"></p>
+
+<label>الاسم الكامل</label>
+
+<input
+type="text"
+id="applicantName"
+style="width:100%;padding:13px;margin:8px 0 15px;border:1px solid #ddd;border-radius:9px;"
+placeholder="اكتب اسمك"
+>
+
+<label>رقم الهاتف</label>
+
+<input
+type="tel"
+id="applicantPhone"
+style="width:100%;padding:13px;margin:8px 0 15px;border:1px solid #ddd;border-radius:9px;"
+placeholder="رقم الهاتف"
+>
+
+<button class="primary-btn" onclick="sendApplication()">
+إرسال الطلب
+</button>
+
+</div>
+
+</div>
+
+
+<!-- التنبيه -->
+
+<div class="toast" id="toast"></div>
+
+
+<!-- =========================
+     الفوتر
+========================= -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div class="footer-column">
+
+<h3>فرصتي</h3>
+
+<p>
+منصة عربية تساعد الباحثين عن العمل
+على اكتشاف فرص جديدة بسهولة.
+</p>
+
+</div>
+
+<div class="footer-column">
+
+<h3>روابط</h3>
+
+<ul>
+
+<li>الرئيسية</li>
+<li>الوظائف</li>
+<li>المجالات</li>
+<li>نشر وظيفة</li>
+
+</ul>
+
+</div>
+
+<div class="footer-column">
+
+<h3>تواصل معنا</h3>
+
+<p>📧 البريد الإلكتروني</p>
+<p>📱 الهاتف</p>
+<p>🌐 فرصتي</p>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© 2026 فرصتي - جميع الحقوق محفوظة
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   وظائف الموقع
+========================= */
+
+function goHome() {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* عرض الوظائف */
+
+function showJobs
