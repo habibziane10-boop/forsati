@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>فرصتي</title>
 
   <style>
@@ -18,6 +17,7 @@
       background: #f4f7fb;
       color: #222;
       min-height: 100vh;
+      padding-bottom: 75px;
     }
 
     header {
@@ -42,53 +42,7 @@
     .container {
       width: 92%;
       max-width: 900px;
-      margin: 25px auto 100px;
-    }
-
-    .welcome {
-      background: white;
-      border-radius: 16px;
-      padding: 25px 18px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
-    }
-
-    .welcome h2 {
-      color: #1769aa;
-      margin-bottom: 10px;
-      font-size: 25px;
-    }
-
-    .welcome p {
-      color: #666;
-      line-height: 1.8;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-
-    button {
-      border: none;
-      border-radius: 10px;
-      padding: 13px 22px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #1769aa;
-      color: white;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    .secondary {
-      background: #444;
+      margin: 25px auto;
     }
 
     .section {
@@ -99,16 +53,83 @@
       box-shadow: 0 3px 12px rgba(0,0,0,0.07);
     }
 
+    .welcome {
+      text-align: center;
+    }
+
+    .welcome h2,
     .section h2 {
       color: #1769aa;
-      margin-bottom: 18px;
-      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .welcome p {
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #1769aa;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .buttons button {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .secondary {
+      background: #444;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      margin-top: 7px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 9px;
+      font-size: 15px;
+      background: white;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    label {
+      font-weight: bold;
+      color: #444;
     }
 
     .jobs {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 15px;
+      margin-top: 18px;
     }
 
     .job {
@@ -124,60 +145,41 @@
     }
 
     .job p {
-      margin: 7px 0;
       color: #555;
+      margin: 7px 0;
+      line-height: 1.5;
     }
 
     .job button {
       width: 100%;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
-    form {
-      display: grid;
-      gap: 12px;
+    .favorite-btn {
+      background: #e9edf2;
+      color: #333;
     }
 
-    label {
-      font-weight: bold;
-      color: #444;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #ccc;
-      border-radius: 9px;
-      font-size: 15px;
-      background: white;
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .hidden {
-      display: none;
+    .favorite-btn.saved {
+      background: #1769aa;
+      color: white;
     }
 
     .message {
+      display: none;
       margin-top: 15px;
       padding: 12px;
-      border-radius: 8px;
+      border-radius: 9px;
       background: #e8f5e9;
       color: #176b25;
-      display: none;
       text-align: center;
     }
 
     .bottom-nav {
       position: fixed;
-      bottom: 0;
       right: 0;
       left: 0;
+      bottom: 0;
       height: 68px;
       background: white;
       border-top: 1px solid #ddd;
@@ -191,7 +193,7 @@
     .nav-btn {
       background: none;
       color: #555;
-      padding: 8px 12px;
+      padding: 7px 10px;
       font-size: 13px;
     }
 
@@ -207,30 +209,21 @@
       transform: translateX(-50%);
       background: #222;
       color: white;
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: 10px;
       display: none;
       z-index: 3000;
-      width: max-content;
       max-width: 90%;
       text-align: center;
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 24px;
-      }
-
       .container {
         width: 94%;
       }
 
-      .welcome {
-        padding: 20px 14px;
-      }
-
-      button {
-        width: 100%;
+      .buttons {
+        flex-direction: column;
       }
 
       .buttons button {
@@ -242,375 +235,622 @@
 
 <body>
 
-  <header>
-    <h1>فرصتي</h1>
-    <p>منصتك لاكتشاف ونشر فرص العمل</p>
-  </header>
+<header>
+  <h1>فرصتي</h1>
+  <p>منصتك لاكتشاف ونشر فرص العمل</p>
+</header>
 
-  <main class="container">
+<main class="container">
 
-    <section id="home" class="welcome">
-      <h2>مرحبا بك في فرصتي</h2>
+  <!-- الرئيسية -->
+  <section id="home" class="section">
+    <div class="welcome">
+      <h2>مرحبا بك في فرصتي 👋</h2>
+
       <p>
-        اكتشف فرص العمل المناسبة لك أو انشر فرصة عمل للوصول إلى الأشخاص المناسبين.
+        اكتشف فرص العمل المناسبة لك أو انشر فرصة عمل جديدة بسهولة.
       </p>
 
       <div class="buttons">
-        <button onclick="startApp()">ابدأ الآن</button>
+        <button onclick="showSection('search')">
+          ابدأ الآن
+        </button>
+
         <button class="secondary" onclick="showSection('publish')">
           نشر فرصة عمل
         </button>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="search" class="section">
-      <h2>البحث عن فرصة</h2>
+  <!-- البحث -->
+  <section id="search" class="section hidden">
+    <h2>🔎 البحث عن فرصة</h2>
 
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="اكتب اسم الوظيفة أو المجال أو المكان..."
+      oninput="searchJobs()"
+    >
+
+    <div id="jobsList" class="jobs">
+
+      <div class="job"
+           data-search="عامل متجر تجارة الجزائر"
+           data-id="job1">
+
+        <h3>عامل متجر</h3>
+        <p>🏢 المجال: تجارة</p>
+        <p>📍 المكان: الجزائر</p>
+
+        <button onclick="applyJob('عامل متجر')">
+          تقديم
+        </button>
+
+        <button
+          class="favorite-btn"
+          onclick="toggleFavorite('job1', this)">
+          ⭐ إضافة للمفضلة
+        </button>
+      </div>
+
+      <div class="job"
+           data-search="مطور ويب تقنية بومرداس"
+           data-id="job2">
+
+        <h3>مطور ويب</h3>
+        <p>🏢 المجال: تقنية</p>
+        <p>📍 المكان: بومرداس</p>
+
+        <button onclick="applyJob('مطور ويب')">
+          تقديم
+        </button>
+
+        <button
+          class="favorite-btn"
+          onclick="toggleFavorite('job2', this)">
+          ⭐ إضافة للمفضلة
+        </button>
+      </div>
+
+      <div class="job"
+           data-search="معلم تعليم تيبازة"
+           data-id="job3">
+
+        <h3>معلم</h3>
+        <p>🏢 المجال: تعليم</p>
+        <p>📍 المكان: تيبازة</p>
+
+        <button onclick="applyJob('معلم')">
+          تقديم
+        </button>
+
+        <button
+          class="favorite-btn"
+          onclick="toggleFavorite('job3', this)">
+          ⭐ إضافة للمفضلة
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- نشر فرصة -->
+  <section id="publish" class="section hidden">
+
+    <h2>📢 نشر فرصة عمل</h2>
+
+    <form id="jobForm">
+
+      <label for="jobTitle">عنوان الوظيفة</label>
       <input
+        id="jobTitle"
         type="text"
-        id="searchInput"
-        placeholder="ابحث عن وظيفة..."
-        oninput="searchJobs()"
+        placeholder="مثال: عامل متجر"
+        required
       >
 
-      <br><br>
+      <label for="company">اسم الشركة</label>
+      <input
+        id="company"
+        type="text"
+        placeholder="اسم الشركة"
+        required
+      >
 
-      <div id="jobsList" class="jobs">
+      <label for="location">المكان</label>
+      <select id="location" required>
+        <option value="">اختر المكان</option>
+        <option>الجزائر</option>
+        <option>بومرداس</option>
+        <option>تيبازة</option>
+        <option>البليدة</option>
+        <option>وهران</option>
+        <option>قسنطينة</option>
+        <option>سطيف</option>
+        <option>عنابة</option>
+      </select>
 
-        <div class="job" data-search="عامل متجر تجارة الجزائر">
-          <h3>عامل متجر</h3>
-          <p>🏢 المجال: تجارة</p>
-          <p>📍 المكان: الجزائر</p>
-          <button onclick="applyJob('عامل متجر')">
-            تقديم
-          </button>
-        </div>
+      <label for="category">المجال</label>
+      <select id="category" required>
+        <option value="">اختر المجال</option>
+        <option>تقنية</option>
+        <option>تجارة</option>
+        <option>تعليم</option>
+        <option>صناعة</option>
+        <option>خدمات</option>
+        <option>نقل</option>
+        <option>صحة</option>
+        <option>أخرى</option>
+      </select>
 
-        <div class="job" data-search="مطور ويب تقنية بومرداس">
-          <h3>مطور ويب</h3>
-          <p>🏢 المجال: تقنية</p>
-          <p>📍 المكان: بومرداس</p>
-          <button onclick="applyJob('مطور ويب')">
-            تقديم
-          </button>
-        </div>
+      <label for="description">وصف الوظيفة</label>
+      <textarea
+        id="description"
+        placeholder="اكتب تفاصيل الوظيفة..."
+        required
+      ></textarea>
 
-        <div class="job" data-search="معلم تعليم تيبازة">
-          <h3>معلم</h3>
-          <p>🏢 المجال: تعليم</p>
-          <p>📍 المكان: تيبازة</p>
-          <button onclick="applyJob('معلم')">
-            تقديم
-          </button>
-        </div>
+      <button type="submit">
+        نشر الفرصة
+      </button>
 
-      </div>
-    </section>
+    </form>
 
-    <section id="publish" class="section hidden">
-      <h2>نشر فرصة عمل</h2>
+    <div id="publishMessage" class="message">
+      تم نشر فرصة العمل بنجاح ✅
+    </div>
 
-      <form id="jobForm">
+  </section>
 
-        <label for="jobTitle">عنوان الوظيفة</label>
-        <input
-          type="text"
-          id="jobTitle"
-          placeholder="مثال: عامل متجر"
-          required
-        >
+  <!-- المفضلة -->
+  <section id="favorites" class="section hidden">
 
-        <label for="company">اسم الشركة</label>
-        <input
-          type="text"
-          id="company"
-          placeholder="اسم الشركة"
-          required
-        >
+    <h2>⭐ المفضلة</h2>
 
-        <label for="location">المكان</label>
-        <select id="location" required>
-          <option value="">اختر المكان</option>
-          <option>الجزائر</option>
-          <option>بومرداس</option>
-          <option>تيبازة</option>
-          <option>البليدة</option>
-          <option>وهران</option>
-          <option>قسنطينة</option>
-          <option>سطيف</option>
-          <option>عنابة</option>
-        </select>
+    <div id="favoritesList" class="jobs"></div>
 
-        <label for="category">المجال</label>
-        <select id="category" required>
-          <option value="">اختر المجال</option>
-          <option>تقنية</option>
-          <option>تجارة</option>
-          <option>تعليم</option>
-          <option>صناعة</option>
-          <option>خدمات</option>
-          <option>نقل</option>
-          <option>صحة</option>
-          <option>أخرى</option>
-        </select>
+    <p id="noFavorites">
+      لم تقم بإضافة أي فرصة إلى المفضلة بعد.
+    </p>
 
-        <label for="description">وصف الوظيفة</label>
-        <textarea
-          id="description"
-          placeholder="اكتب تفاصيل الوظيفة..."
-          required
-        ></textarea>
+  </section>
 
-        <button type="submit">نشر الفرصة</button>
+  <!-- الحساب -->
+  <section id="account" class="section hidden">
 
-      </form>
+    <h2>👤 حسابي</h2>
 
-      <div id="publishMessage" class="message">
-        تم نشر فرصة العمل بنجاح ✅
-      </div>
-    </section>
+    <label for="userName">الاسم</label>
+    <input
+      id="userName"
+      type="text"
+      placeholder="اكتب اسمك"
+    >
 
-    <section id="favorites" class="section hidden">
-      <h2>المفضلة</h2>
-      <p id="favoriteText">
-        لم تقم بإضافة أي فرصة إلى المفضلة بعد.
-      </p>
-    </section>
+    <label for="userPhone">رقم الهاتف</label>
+    <input
+      id="userPhone"
+      type="tel"
+      placeholder="اكتب رقم هاتفك"
+    >
 
-    <section id="account" class="section hidden">
-      <h2>حسابي</h2>
-      <p>يمكنك لاحقًا إضافة بيانات الحساب والملف الشخصي هنا.</p>
-    </section>
-
-  </main>
-
-  <nav class="bottom-nav">
-
-    <button class="nav-btn active" onclick="showSection('home')">
-      🏠<br>الرئيسية
+    <button onclick="saveAccount()">
+      حفظ بياناتي
     </button>
 
-    <button class="nav-btn" onclick="showSection('search')">
-      🔎<br>بحث
-    </button>
+    <div id="accountMessage" class="message">
+      تم حفظ بياناتك ✅
+    </div>
 
-    <button class="nav-btn" onclick="showSection('favorites')">
-      ⭐<br>مفضلة
-    </button>
+  </section>
 
-    <button class="nav-btn" onclick="showSection('account')">
-      👤<br>حسابي
-    </button>
+</main>
 
-  </nav>
+<!-- شريط التنقل -->
+<nav class="bottom-nav">
 
-  <div id="toast" class="toast"></div>
+  <button
+    class="nav-btn active"
+    onclick="showSection('home')">
+    🏠<br>الرئيسية
+  </button>
 
-  <script>
+  <button
+    class="nav-btn"
+    onclick="showSection('search')">
+    🔎<br>بحث
+  </button>
 
-    function showSection(sectionId) {
+  <button
+    class="nav-btn"
+    onclick="showSection('favorites')">
+    ⭐<br>مفضلة
+  </button>
 
-      const sections = [
-        "home",
-        "search",
-        "publish",
-        "favorites",
-        "account"
-      ];
+  <button
+    class="nav-btn"
+    onclick="showSection('account')">
+    👤<br>حسابي
+  </button>
 
-      sections.forEach(function(id) {
-        const section = document.getElementById(id);
+</nav>
 
-        if (section) {
-          section.classList.add("hidden");
-        }
-      });
+<div id="toast" class="toast"></div>
 
-      const selected = document.getElementById(sectionId);
+<script>
 
-      if (selected) {
-        selected.classList.remove("hidden");
-        selected.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+  let favorites =
+    JSON.parse(localStorage.getItem("forsatiFavorites") || "[]");
+
+  function showSection(sectionId) {
+
+    const sections = [
+      "home",
+      "search",
+      "publish",
+      "favorites",
+      "account"
+    ];
+
+    sections.forEach(function(id) {
+
+      const section = document.getElementById(id);
+
+      if (section) {
+        section.classList.add("hidden");
       }
 
-      document.querySelectorAll(".nav-btn").forEach(function(button) {
-        button.classList.remove("active");
-      });
+    });
 
+    const selected =
+      document.getElementById(sectionId);
+
+    if (selected) {
+      selected.classList.remove("hidden");
     }
 
-    function startApp() {
-      showSection("search");
-      showToast("مرحبا بك في فرصتي 👋");
+    document.querySelectorAll(".nav-btn").forEach(function(btn) {
+      btn.classList.remove("active");
+    });
+
+    const buttons =
+      document.querySelectorAll(".nav-btn");
+
+    const index = {
+      home: 0,
+      search: 1,
+      favorites: 2,
+      account: 3
+    };
+
+    if (index[sectionId] !== undefined) {
+      buttons[index[sectionId]].classList.add("active");
     }
 
-    function searchJobs() {
+    if (sectionId === "favorites") {
+      renderFavorites();
+    }
 
-      const input = document
-        .getElementById("searchInput")
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  function searchJobs() {
+
+    const input =
+      document.getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
 
-      const jobs = document.querySelectorAll(".job");
+    document.querySelectorAll(".job").forEach(function(job) {
 
-      jobs.forEach(function(job) {
-
-        const text = job
-          .getAttribute("data-search")
+      const text =
+        (job.getAttribute("data-search") || "")
           .toLowerCase();
 
-        if (text.includes(input)) {
-          job.style.display = "block";
-        } else {
-          job.style.display = "none";
-        }
+      job.style.display =
+        text.includes(input) ? "block" : "none";
 
-      });
+    });
+  }
+
+  function applyJob(jobName) {
+
+    const name = prompt("اكتب اسمك:");
+
+    if (!name) {
+      return;
+    }
+
+    const phone = prompt("اكتب رقم هاتفك:");
+
+    if (!phone) {
+      return;
+    }
+
+    showToast(
+      "تم تسجيل طلبك لوظيفة " +
+      jobName +
+      " بنجاح ✅"
+    );
+  }
+
+  function toggleFavorite(id, button) {
+
+    if (favorites.includes(id)) {
+
+      favorites =
+        favorites.filter(function(item) {
+          return item !== id;
+        });
+
+      button.classList.remove("saved");
+      button.textContent = "⭐ إضافة للمفضلة";
+
+      showToast("تمت إزالة الفرصة من المفضلة");
+
+    } else {
+
+      favorites.push(id);
+
+      button.classList.add("saved");
+      button.textContent = "⭐ تمت الإضافة";
+
+      showToast("تمت إضافة الفرصة للمفضلة");
 
     }
 
-    function applyJob(jobName) {
+    localStorage.setItem(
+      "forsatiFavorites",
+      JSON.stringify(favorites)
+    );
 
-      const name = prompt("اكتب اسمك:");
+    renderFavorites();
+  }
 
-      if (!name) {
-        return;
-      }
+  function renderFavorites() {
 
-      const phone = prompt("اكتب رقم هاتفك:");
+    const list =
+      document.getElementById("favoritesList");
 
-      if (!phone) {
-        return;
-      }
+    const empty =
+      document.getElementById("noFavorites");
 
-      showToast(
-        "تم تسجيل طلبك لوظيفة " +
-        jobName +
-        " بنجاح ✅"
-      );
+    list.innerHTML = "";
+
+    if (favorites.length === 0) {
+
+      empty.style.display = "block";
+      return;
 
     }
 
-    document
-      .getElementById("jobForm")
-      .addEventListener("submit", function(event) {
+    empty.style.display = "none";
 
-        event.preventDefault();
+    favorites.forEach(function(id) {
 
-        const title =
-          document.getElementById("jobTitle").value.trim();
-
-        const company =
-          document.getElementById("company").value.trim();
-
-        const location =
-          document.getElementById("location").value;
-
-        const category =
-          document.getElementById("category").value;
-
-        const description =
-          document.getElementById("description").value.trim();
-
-        if (
-          !title ||
-          !company ||
-          !location ||
-          !category ||
-          !description
-        ) {
-          showToast("يرجى ملء جميع المعلومات");
-          return;
-        }
-
-        const jobsList =
-          document.getElementById("jobsList");
-
-        const newJob =
-          document.createElement("div");
-
-        newJob.className = "job";
-
-        newJob.setAttribute(
-          "data-search",
-          title + " " +
-          company + " " +
-          location + " " +
-          category
+      const original =
+        document.querySelector(
+          '.job[data-id="' + id + '"]'
         );
 
-        newJob.innerHTML = `
-          <h3>${escapeHTML(title)}</h3>
-          <p>🏢 الشركة: ${escapeHTML(company)}</p>
-          <p>📍 المكان: ${escapeHTML(location)}</p>
-          <p>📂 المجال: ${escapeHTML(category)}</p>
-          <p>${escapeHTML(description)}</p>
-          <button onclick="applyJob('${escapeJS(title)}')">
-            تقديم
-          </button>
-        `;
+      if (!original) {
+        return;
+      }
 
-        jobsList.prepend(newJob);
+      const copy =
+        original.cloneNode(true);
 
-        document
-          .getElementById("jobForm")
-          .reset();
+      list.appendChild(copy);
+
+    });
+  }
+
+  document
+    .getElementById("jobForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const title =
+        document.getElementById("jobTitle")
+          .value.trim();
+
+      const company =
+        document.getElementById("company")
+          .value.trim();
+
+      const location =
+        document.getElementById("location")
+          .value;
+
+      const category =
+        document.getElementById("category")
+          .value;
+
+      const description =
+        document.getElementById("description")
+          .value.trim();
+
+      if (
+        !title ||
+        !company ||
+        !location ||
+        !category ||
+        !description
+      ) {
+
+        showToast(
+          "يرجى ملء جميع المعلومات"
+        );
+
+        return;
+      }
+
+      const id =
+        "userjob_" + Date.now();
+
+      const job =
+        document.createElement("div");
+
+      job.className = "job";
+
+      job.setAttribute("data-id", id);
+
+      job.setAttribute(
+        "data-search",
+        title + " " +
+        company + " " +
+        location + " " +
+        category
+      );
+
+      job.innerHTML = `
+        <h3>${escapeHTML(title)}</h3>
+        <p>🏢 الشركة: ${escapeHTML(company)}</p>
+        <p>📍 المكان: ${escapeHTML(location)}</p>
+        <p>📂 المجال: ${escapeHTML(category)}</p>
+        <p>${escapeHTML(description)}</p>
+
+        <button onclick="applyJob('${escapeJS(title)}')">
+          تقديم
+        </button>
+
+        <button
+          class="favorite-btn"
+          onclick="toggleFavorite('${id}', this)">
+          ⭐ إضافة للمفضلة
+        </button>
+      `;
+
+      document
+        .getElementById("jobsList")
+        .prepend(job);
+
+      document
+        .getElementById("jobForm")
+        .reset();
+
+      document
+        .getElementById("publishMessage")
+        .style.display = "block";
+
+      showToast("تم نشر الفرصة بنجاح ✅");
+
+      setTimeout(function() {
 
         document
           .getElementById("publishMessage")
-          .style.display = "block";
+          .style.display = "none";
 
-        showToast("تم نشر الفرصة بنجاح ✅");
-
-        setTimeout(function() {
-          document
-            .getElementById("publishMessage")
-            .style.display = "none";
-        }, 3000);
-
-        showSection("search");
-
-      });
-
-    function escapeHTML(text) {
-
-      const div = document.createElement("div");
-
-      div.textContent = text;
-
-      return div.innerHTML;
-
-    }
-
-    function escapeJS(text) {
-
-      return text
-        .replace(/\\/g, "\\\\")
-        .replace(/'/g, "\\'")
-        .replace(/"/g, '\\"');
-
-    }
-
-    function showToast(message) {
-
-      const toast =
-        document.getElementById("toast");
-
-      toast.textContent = message;
-
-      toast.style.display = "block";
-
-      setTimeout(function() {
-        toast.style.display = "none";
       }, 3000);
 
+      showSection("search");
+    });
+
+  function saveAccount() {
+
+    const name =
+      document.getElementById("userName")
+        .value.trim();
+
+    const phone =
+      document.getElementById("userPhone")
+        .value.trim();
+
+    if (!name || !phone) {
+
+      showToast(
+        "يرجى كتابة الاسم ورقم الهاتف"
+      );
+
+      return;
     }
 
-  </script>
+    localStorage.setItem(
+      "forsatiName",
+      name
+    );
+
+    localStorage.setItem(
+      "forsatiPhone",
+      phone
+    );
+
+    document
+      .getElementById("accountMessage")
+      .style.display = "block";
+
+    showToast("تم حفظ بياناتك ✅");
+
+  }
+
+  function escapeHTML(text) {
+
+    const div =
+      document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+  }
+
+  function escapeJS(text) {
+
+    return text
+      .replace(/\\/g, "\\\\")
+      .replace(/'/g, "\\'")
+      .replace(/"/g, '\\"');
+  }
+
+  function showToast(message) {
+
+    const toast =
+      document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.style.display = "block";
+
+    setTimeout(function() {
+
+      toast.style.display = "none";
+
+    }, 3000);
+  }
+
+  /* استرجاع بيانات الحساب */
+  document.getElementById("userName").value =
+    localStorage.getItem("forsatiName") || "";
+
+  document.getElementById("userPhone").value =
+    localStorage.getItem("forsatiPhone") || "";
+
+  /* استرجاع حالة المفضلة */
+  document.querySelectorAll(".job").forEach(function(job) {
+
+    const id = job.getAttribute("data-id");
+
+    if (favorites.includes(id)) {
+
+      const button =
+        job.querySelector(".favorite-btn");
+
+      if (button) {
+
+        button.classList.add("saved");
+        button.textContent = "⭐ تمت الإضافة";
+
+      }
+    }
+  });
+
+</script>
 
 </body>
         </html>
