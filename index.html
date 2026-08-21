@@ -749,7 +749,9 @@ savedJobs.unshift({
   company: company,
   location: location,
   category: category,
-  description: description
+  description: description,
+  ownerName: localStorage.getItem("forsatiName") || "",
+  ownerPhone: localStorage.getItem("forsatiPhone") || ""
 });
 
 localStorage.setItem(
