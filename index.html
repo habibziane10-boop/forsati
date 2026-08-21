@@ -572,7 +572,20 @@
     if (!phone) {
       return;
     }
+const applications =
+  JSON.parse(localStorage.getItem("forsatiApplications") || "[]");
 
+applications.unshift({
+  jobName: jobName,
+  name: name,
+  phone: phone,
+  date: new Date().toISOString()
+});
+
+localStorage.setItem(
+  "forsatiApplications",
+  JSON.stringify(applications)
+);
     showToast(
       "تم تسجيل طلبك لوظيفة " +
       jobName +
