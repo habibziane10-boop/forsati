@@ -1,1 +1,616 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>فرصتي</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #222;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #1769aa;
+      color: white;
+      padding: 18px 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 14px;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 900px;
+      margin: 25px auto 100px;
+    }
+
+    .welcome {
+      background: white;
+      border-radius: 16px;
+      padding: 25px 18px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .welcome h2 {
+      color: #1769aa;
+      margin-bottom: 10px;
+      font-size: 25px;
+    }
+
+    .welcome p {
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 13px 22px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #1769aa;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .secondary {
+      background: #444;
+    }
+
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
+
+    .section h2 {
+      color: #1769aa;
+      margin-bottom: 18px;
+      font-size: 22px;
+    }
+
+    .jobs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+    }
+
+    .job {
+      border: 1px solid #ddd;
+      border-radius: 14px;
+      padding: 16px;
+      background: #fafafa;
+    }
+
+    .job h3 {
+      color: #1769aa;
+      margin-bottom: 10px;
+    }
+
+    .job p {
+      margin: 7px 0;
+      color: #555;
+    }
+
+    .job button {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #444;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 9px;
+      font-size: 15px;
+      background: white;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #e8f5e9;
+      color: #176b25;
+      display: none;
+      text-align: center;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 68px;
+      background: white;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 2000;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+    }
+
+    .nav-btn {
+      background: none;
+      color: #555;
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    .nav-btn.active {
+      color: #1769aa;
+      font-weight: bold;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 85px;
+      transform: translateX(-50%);
+      background: #222;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      display: none;
+      z-index: 3000;
+      width: max-content;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .container {
+        width: 94%;
+      }
+
+      .welcome {
+        padding: 20px 14px;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .buttons button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>فرصتي</h1>
+    <p>منصتك لاكتشاف ونشر فرص العمل</p>
+  </header>
+
+  <main class="container">
+
+    <section id="home" class="welcome">
+      <h2>مرحبا بك في فرصتي</h2>
+      <p>
+        اكتشف فرص العمل المناسبة لك أو انشر فرصة عمل للوصول إلى الأشخاص المناسبين.
+      </p>
+
+      <div class="buttons">
+        <button onclick="startApp()">ابدأ الآن</button>
+        <button class="secondary" onclick="showSection('publish')">
+          نشر فرصة عمل
+        </button>
+      </div>
+    </section>
+
+    <section id="search" class="section">
+      <h2>البحث عن فرصة</h2>
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="ابحث عن وظيفة..."
+        oninput="searchJobs()"
+      >
+
+      <br><br>
+
+      <div id="jobsList" class="jobs">
+
+        <div class="job" data-search="عامل متجر تجارة الجزائر">
+          <h3>عامل متجر</h3>
+          <p>🏢 المجال: تجارة</p>
+          <p>📍 المكان: الجزائر</p>
+          <button onclick="applyJob('عامل متجر')">
+            تقديم
+          </button>
+        </div>
+
+        <div class="job" data-search="مطور ويب تقنية بومرداس">
+          <h3>مطور ويب</h3>
+          <p>🏢 المجال: تقنية</p>
+          <p>📍 المكان: بومرداس</p>
+          <button onclick="applyJob('مطور ويب')">
+            تقديم
+          </button>
+        </div>
+
+        <div class="job" data-search="معلم تعليم تيبازة">
+          <h3>معلم</h3>
+          <p>🏢 المجال: تعليم</p>
+          <p>📍 المكان: تيبازة</p>
+          <button onclick="applyJob('معلم')">
+            تقديم
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="publish" class="section hidden">
+      <h2>نشر فرصة عمل</h2>
+
+      <form id="jobForm">
+
+        <label for="jobTitle">عنوان الوظيفة</label>
+        <input
+          type="text"
+          id="jobTitle"
+          placeholder="مثال: عامل متجر"
+          required
+        >
+
+        <label for="company">اسم الشركة</label>
+        <input
+          type="text"
+          id="company"
+          placeholder="اسم الشركة"
+          required
+        >
+
+        <label for="location">المكان</label>
+        <select id="location" required>
+          <option value="">اختر المكان</option>
+          <option>الجزائر</option>
+          <option>بومرداس</option>
+          <option>تيبازة</option>
+          <option>البليدة</option>
+          <option>وهران</option>
+          <option>قسنطينة</option>
+          <option>سطيف</option>
+          <option>عنابة</option>
+        </select>
+
+        <label for="category">المجال</label>
+        <select id="category" required>
+          <option value="">اختر المجال</option>
+          <option>تقنية</option>
+          <option>تجارة</option>
+          <option>تعليم</option>
+          <option>صناعة</option>
+          <option>خدمات</option>
+          <option>نقل</option>
+          <option>صحة</option>
+          <option>أخرى</option>
+        </select>
+
+        <label for="description">وصف الوظيفة</label>
+        <textarea
+          id="description"
+          placeholder="اكتب تفاصيل الوظيفة..."
+          required
+        ></textarea>
+
+        <button type="submit">نشر الفرصة</button>
+
+      </form>
+
+      <div id="publishMessage" class="message">
+        تم نشر فرصة العمل بنجاح ✅
+      </div>
+    </section>
+
+    <section id="favorites" class="section hidden">
+      <h2>المفضلة</h2>
+      <p id="favoriteText">
+        لم تقم بإضافة أي فرصة إلى المفضلة بعد.
+      </p>
+    </section>
+
+    <section id="account" class="section hidden">
+      <h2>حسابي</h2>
+      <p>يمكنك لاحقًا إضافة بيانات الحساب والملف الشخصي هنا.</p>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+
+    <button class="nav-btn active" onclick="showSection('home')">
+      🏠<br>الرئيسية
+    </button>
+
+    <button class="nav-btn" onclick="showSection('search')">
+      🔎<br>بحث
+    </button>
+
+    <button class="nav-btn" onclick="showSection('favorites')">
+      ⭐<br>مفضلة
+    </button>
+
+    <button class="nav-btn" onclick="showSection('account')">
+      👤<br>حسابي
+    </button>
+
+  </nav>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+
+    function showSection(sectionId) {
+
+      const sections = [
+        "home",
+        "search",
+        "publish",
+        "favorites",
+        "account"
+      ];
+
+      sections.forEach(function(id) {
+        const section = document.getElementById(id);
+
+        if (section) {
+          section.classList.add("hidden");
+        }
+      });
+
+      const selected = document.getElementById(sectionId);
+
+      if (selected) {
+        selected.classList.remove("hidden");
+        selected.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+
+      document.querySelectorAll(".nav-btn").forEach(function(button) {
+        button.classList.remove("active");
+      });
+
+    }
+
+    function startApp() {
+      showSection("search");
+      showToast("مرحبا بك في فرصتي 👋");
+    }
+
+    function searchJobs() {
+
+      const input = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+      const jobs = document.querySelectorAll(".job");
+
+      jobs.forEach(function(job) {
+
+        const text = job
+          .getAttribute("data-search")
+          .toLowerCase();
+
+        if (text.includes(input)) {
+          job.style.display = "block";
+        } else {
+          job.style.display = "none";
+        }
+
+      });
+
+    }
+
+    function applyJob(jobName) {
+
+      const name = prompt("اكتب اسمك:");
+
+      if (!name) {
+        return;
+      }
+
+      const phone = prompt("اكتب رقم هاتفك:");
+
+      if (!phone) {
+        return;
+      }
+
+      showToast(
+        "تم تسجيل طلبك لوظيفة " +
+        jobName +
+        " بنجاح ✅"
+      );
+
+    }
+
+    document
+      .getElementById("jobForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const title =
+          document.getElementById("jobTitle").value.trim();
+
+        const company =
+          document.getElementById("company").value.trim();
+
+        const location =
+          document.getElementById("location").value;
+
+        const category =
+          document.getElementById("category").value;
+
+        const description =
+          document.getElementById("description").value.trim();
+
+        if (
+          !title ||
+          !company ||
+          !location ||
+          !category ||
+          !description
+        ) {
+          showToast("يرجى ملء جميع المعلومات");
+          return;
+        }
+
+        const jobsList =
+          document.getElementById("jobsList");
+
+        const newJob =
+          document.createElement("div");
+
+        newJob.className = "job";
+
+        newJob.setAttribute(
+          "data-search",
+          title + " " +
+          company + " " +
+          location + " " +
+          category
+        );
+
+        newJob.innerHTML = `
+          <h3>${escapeHTML(title)}</h3>
+          <p>🏢 الشركة: ${escapeHTML(company)}</p>
+          <p>📍 المكان: ${escapeHTML(location)}</p>
+          <p>📂 المجال: ${escapeHTML(category)}</p>
+          <p>${escapeHTML(description)}</p>
+          <button onclick="applyJob('${escapeJS(title)}')">
+            تقديم
+          </button>
+        `;
+
+        jobsList.prepend(newJob);
+
+        document
+          .getElementById("jobForm")
+          .reset();
+
+        document
+          .getElementById("publishMessage")
+          .style.display = "block";
+
+        showToast("تم نشر الفرصة بنجاح ✅");
+
+        setTimeout(function() {
+          document
+            .getElementById("publishMessage")
+            .style.display = "none";
+        }, 3000);
+
+        showSection("search");
+
+      });
+
+    function escapeHTML(text) {
+
+      const div = document.createElement("div");
+
+      div.textContent = text;
+
+      return div.innerHTML;
+
+    }
+
+    function escapeJS(text) {
+
+      return text
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'")
+        .replace(/"/g, '\\"');
+
+    }
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+
+      toast.style.display = "block";
+
+      setTimeout(function() {
+        toast.style.display = "none";
+      }, 3000);
+
+    }
+
+  </script>
+
+</body>
+        </html>
