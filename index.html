@@ -727,7 +727,22 @@
           ⭐ إضافة للمفضلة
         </button>
       `;
+const savedJobs =
+  JSON.parse(localStorage.getItem("forsatiJobs") || "[]");
 
+savedJobs.unshift({
+  id: id,
+  title: title,
+  company: company,
+  location: location,
+  category: category,
+  description: description
+});
+
+localStorage.setItem(
+  "forsatiJobs",
+  JSON.stringify(savedJobs)
+);
       document
         .getElementById("jobsList")
         .prepend(job);
