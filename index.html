@@ -1,367 +1,492 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>فرصتي</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فرصتي</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,Tahoma,sans-serif;
+}
 
-    body {
-      background: #f4f7fb;
-      color: #222;
-      min-height: 100vh;
-      padding-bottom: 75px;
-    }
+body{
+  background:#f5f6fa;
+  color:#202535;
+}
 
-    header {
-      background: #1769aa;
-      color: white;
-      padding: 18px 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+/* ===== النظام ===== */
 
-    header h1 {
-      font-size: 28px;
-      margin-bottom: 6px;
-    }
+.app{
+  min-height:100vh;
+  display:flex;
+}
 
-    header p {
-      font-size: 14px;
-    }
+/* ===== القائمة الجانبية ===== */
 
-    .container {
-      width: 92%;
-      max-width: 900px;
-      margin: 25px auto;
-    }
+.sidebar{
+  width:250px;
+  background:#ffffff;
+  border-left:1px solid #e5e7ee;
+  padding:22px 15px;
+  position:fixed;
+  right:0;
+  top:0;
+  bottom:0;
+  z-index:10;
+}
 
-    .section {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
-    }
+.logo{
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
 
-    .welcome {
-      text-align: center;
-    }
+.logo small{
+  display:block;
+  font-size:12px;
+  color:#858b99;
+  margin-top:7px;
+  font-weight:normal;
+}
 
-    .welcome h2,
-    .section h2 {
-      color: #1769aa;
-      margin-bottom: 15px;
-    }
+.menu{
+  margin-top:30px;
+}
 
-    .welcome p {
-      color: #666;
-      line-height: 1.8;
-    }
+.menu button{
+  width:100%;
+  border:0;
+  background:transparent;
+  padding:14px;
+  margin-bottom:7px;
+  border-radius:12px;
+  text-align:right;
+  cursor:pointer;
+  color:#606777;
+  font-size:15px;
+}
 
-    .buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
+.menu button:hover,
+.menu button.active{
+  background:#eef0ff;
+  color:#4655d9;
+  font-weight:bold;
+}
 
-    button {
-      border: none;
-      border-radius: 10px;
-      padding: 13px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #1769aa;
-      color: white;
-    }
+/* ===== المحتوى ===== */
 
-    button:hover {
-      opacity: 0.9;
-    }
+.main{
+  width:100%;
+  margin-right:250px;
+  padding:25px;
+}
 
-    .buttons button {
-      flex: 1;
-      min-width: 150px;
-    }
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
 
-    .secondary {
-      background: #444;
-    }
+.topbar h1{
+  font-size:26px;
+}
 
-    .hidden {
-      display: none !important;
-    }
+.account-mini{
+  background:white;
+  border:1px solid #e5e7ee;
+  padding:10px 15px;
+  border-radius:12px;
+}
 
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 13px;
-      margin-top: 7px;
-      margin-bottom: 12px;
-      border: 1px solid #ccc;
-      border-radius: 9px;
-      font-size: 15px;
-      background: white;
-    }
+/* ===== الصفحات ===== */
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
+.page{
+  display:none;
+}
 
-    label {
-      font-weight: bold;
-      color: #444;
-    }
+.page.active{
+  display:block;
+}
 
-    .jobs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 15px;
-      margin-top: 18px;
-    }
+/* ===== البطاقات ===== */
 
-    .job {
-      border: 1px solid #ddd;
-      border-radius: 14px;
-      padding: 16px;
-      background: #fafafa;
-    }
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:20px;
+}
 
-    .job h3 {
-      color: #1769aa;
-      margin-bottom: 10px;
-    }
+.card{
+  background:white;
+  border:1px solid #e5e7ee;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(20,30,60,.04);
+}
 
-    .job p {
-      color: #555;
-      margin: 7px 0;
-      line-height: 1.5;
-    }
+.card-title{
+  color:#858b99;
+  font-size:14px;
+}
 
-    .job button {
-      width: 100%;
-      margin-top: 8px;
-    }
+.card-number{
+  font-size:28px;
+  font-weight:bold;
+  margin-top:8px;
+}
 
-    .favorite-btn {
-      background: #e9edf2;
-      color: #333;
-    }
+/* ===== العناوين ===== */
 
-    .favorite-btn.saved {
-      background: #1769aa;
-      color: white;
-    }
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
 
-    .message {
-      display: none;
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 9px;
-      background: #e8f5e9;
-      color: #176b25;
-      text-align: center;
-    }
+/* ===== الفرص ===== */
 
-    .bottom-nav {
-      position: fixed;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      height: 68px;
-      background: white;
-      border-top: 1px solid #ddd;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 2000;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-    }
+.jobs{
+  display:grid;
+  gap:13px;
+}
 
-    .nav-btn {
-      background: none;
-      color: #555;
-      padding: 7px 10px;
-      font-size: 13px;
-    }
+.job{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
 
-    .nav-btn.active {
-      color: #1769aa;
-      font-weight: bold;
-    }
+.job h3{
+  margin-bottom:8px;
+}
 
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 85px;
-      transform: translateX(-50%);
-      background: #222;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 10px;
-      display: none;
-      z-index: 3000;
-      max-width: 90%;
-      text-align: center;
-    }
+.info{
+  color:#777f90;
+  font-size:14px;
+  line-height:1.8;
+}
 
-    @media (max-width: 600px) {
-      .container {
-        width: 94%;
-      }
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
 
-      .buttons {
-        flex-direction: column;
-      }
+/* ===== الأزرار ===== */
 
-      .buttons button {
-        width: 100%;
-      }
-    }
-  </style>
+.btn{
+  border:0;
+  padding:11px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.primary{
+  background:#4655d9;
+  color:white;
+}
+
+.secondary{
+  background:#eef0ff;
+  color:#4655d9;
+}
+
+.danger{
+  background:#ffecec;
+  color:#d33;
+}
+
+/* ===== النماذج ===== */
+
+.form{
+  display:grid;
+  gap:15px;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+label{
+  display:grid;
+  gap:7px;
+  color:#555d6d;
+  font-size:14px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #dfe2ea;
+  border-radius:10px;
+  outline:none;
+  background:white;
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#6572df;
+}
+
+/* ===== البحث ===== */
+
+.search-box{
+  display:grid;
+  grid-template-columns:1fr 200px;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+/* ===== رسالة فارغة ===== */
+
+.empty{
+  text-align:center;
+  padding:45px 15px;
+  color:#858b99;
+}
+
+/* ===== إشعار ===== */
+
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#202535;
+  color:white;
+  padding:13px 18px;
+  border-radius:10px;
+  display:none;
+  z-index:100;
+}
+
+/* ===== زر الهاتف ===== */
+
+.mobile-btn{
+  display:none;
+  border:0;
+  background:white;
+  padding:10px 13px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* ===== الهاتف ===== */
+
+@media(max-width:850px){
+
+  .sidebar{
+    display:none;
+  }
+
+  .sidebar.open{
+    display:block;
+    width:270px;
+    box-shadow:0 0 30px rgba(0,0,0,.15);
+  }
+
+  .main{
+    margin-right:0;
+    padding:15px;
+  }
+
+  .mobile-btn{
+    display:block;
+  }
+
+  .topbar{
+    gap:10px;
+  }
+
+  .cards{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  .search-box{
+    grid-template-columns:1fr;
+  }
+
+  .job{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
+@media(max-width:480px){
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .topbar h1{
+    font-size:21px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>فرصتي</h1>
-  <p>منصتك لاكتشاف ونشر فرص العمل</p>
+<div class="app">
+
+<!-- ===== القائمة ===== -->
+
+<aside class="sidebar" id="sidebar">
+
+  <div class="logo">
+    فرصتي
+    <small>منصة اكتشاف ونشر فرص العمل</small>
+  </div>
+
+  <nav class="menu">
+
+    <button class="active" onclick="openPage('home',this)">
+      🏠 الرئيسية
+    </button>
+
+    <button onclick="openPage('search',this)">
+      🔎 البحث عن الفرص
+    </button>
+
+    <button onclick="openPage('favorites',this)">
+      ⭐ المفضلة
+    </button>
+
+    <button onclick="openPage('publish',this)">
+      ➕ نشر فرصة
+    </button>
+
+    <button onclick="openPage('dashboard',this)">
+      📊 لوحة التحكم
+    </button>
+
+    <button onclick="openPage('notifications',this)">
+      🔔 الإشعارات
+    </button>
+
+    <button onclick="openPage('account',this)">
+      👤 حسابي
+    </button>
+
+    <button onclick="openPage('settings',this)">
+      ⚙️ الإعدادات
+    </button>
+
+  </nav>
+
+</aside>
+
+<!-- ===== المحتوى ===== -->
+
+<main class="main">
+
+<header class="topbar">
+
+  <div style="display:flex;align-items:center;gap:10px">
+
+    <button class="mobile-btn" onclick="toggleMenu()">
+      ☰
+    </button>
+
+    <h1 id="pageTitle">
+      الرئيسية
+    </h1>
+
+  </div>
+
+  <div class="account-mini">
+    👤 <span id="userName">زائر</span>
+  </div>
+
 </header>
 
-<main class="container">
 
-  <!-- الرئيسية -->
-  <section id="home" class="section">
-    <div class="welcome">
-      <h2>مرحبا بك في فرصتي 👋</h2>
+<!-- ================= الرئيسية ================= -->
 
-      <p>
-        اكتشف فرص العمل المناسبة لك أو انشر فرصة عمل جديدة بسهولة.
-      </p>
+<section id="home" class="page active">
 
-      <div class="buttons">
-        <button onclick="showSection('search')">
-          ابدأ الآن
-        </button>
+  <div class="cards">
 
-        <button class="secondary" onclick="showSection('publish')">
-          نشر فرصة عمل
-        </button>
-      </div>
+    <div class="card">
+      <div class="card-title">الفرص المتاحة</div>
+      <div class="card-number" id="jobCount">0</div>
     </div>
-  </section>
 
-  <!-- البحث -->
-  <section id="search" class="section hidden">
-    <h2>🔎 البحث عن فرصة</h2>
-
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="اكتب اسم الوظيفة أو المجال أو المكان..."
-      oninput="searchJobs()"
-    >
-
-    <div id="jobsList" class="jobs">
-
-      <div class="job"
-           data-search="عامل متجر تجارة الجزائر"
-           data-id="job1">
-
-        <h3>عامل متجر</h3>
-        <p>🏢 المجال: تجارة</p>
-        <p>📍 المكان: الجزائر</p>
-
-        <button onclick="applyJob('عامل متجر')">
-          تقديم
-        </button>
-
-        <button
-          class="favorite-btn"
-          onclick="toggleFavorite('job1', this)">
-          ⭐ إضافة للمفضلة
-        </button>
-      </div>
-
-      <div class="job"
-           data-search="مطور ويب تقنية بومرداس"
-           data-id="job2">
-
-        <h3>مطور ويب</h3>
-        <p>🏢 المجال: تقنية</p>
-        <p>📍 المكان: بومرداس</p>
-
-        <button onclick="applyJob('مطور ويب')">
-          تقديم
-        </button>
-
-        <button
-          class="favorite-btn"
-          onclick="toggleFavorite('job2', this)">
-          ⭐ إضافة للمفضلة
-        </button>
-      </div>
-
-      <div class="job"
-           data-search="معلم تعليم تيبازة"
-           data-id="job3">
-
-        <h3>معلم</h3>
-        <p>🏢 المجال: تعليم</p>
-        <p>📍 المكان: تيبازة</p>
-
-        <button onclick="applyJob('معلم')">
-          تقديم
-        </button>
-
-        <button
-          class="favorite-btn"
-          onclick="toggleFavorite('job3', this)">
-          ⭐ إضافة للمفضلة
-        </button>
-      </div>
-
+    <div class="card">
+      <div class="card-title">المفضلة</div>
+      <div class="card-number" id="favoriteCount">0</div>
     </div>
-  </section>
 
-  <!-- نشر فرصة -->
-  <section id="publish" class="section hidden">
+    <div class="card">
+      <div class="card-title">طلبات التقديم</div>
+      <div class="card-number" id="applicationCount">0</div>
+    </div>
 
-    <h2>📢 نشر فرصة عمل</h2>
+    <div class="card">
+      <div class="card-title">الإشعارات</div>
+      <div class="card-number">0</div>
+    </div>
 
-    <form id="jobForm">
+  </div>
 
-      <label for="jobTitle">عنوان الوظيفة</label>
+
+  <div class="card">
+
+    <div class="section-head">
+      <h2>أحدث الفرص</h2>
+
+      <button class="btn secondary"
+              onclick="openPage('search')">
+        عرض الكل
+      </button>
+    </div>
+
+    <div id="homeJobs" class="jobs"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= البحث ================= -->
+
+<section id="search" class="page">
+
+  <div class="card">
+
+    <div class="search-box">
+
       <input
-        id="jobTitle"
-        type="text"
-        placeholder="مثال: عامل متجر"
-        required
+        id="searchInput"
+        placeholder="ابحث عن وظيفة أو شركة..."
       >
 
-      <label for="company">اسم الشركة</label>
-      <input
-        id="company"
-        type="text"
-        placeholder="اسم الشركة"
-        required
-      >
+      <select id="locationFilter">
 
-      <label for="location">المكان</label>
-      <select id="location" required>
-        <option value="">اختر المكان</option>
+        <option value="">كل الولايات</option>
         <option>الجزائر</option>
         <option>بومرداس</option>
         <option>تيبازة</option>
@@ -370,517 +495,924 @@
         <option>قسنطينة</option>
         <option>سطيف</option>
         <option>عنابة</option>
+
       </select>
 
-      <label for="category">المجال</label>
-      <select id="category" required>
-        <option value="">اختر المجال</option>
-        <option>تقنية</option>
-        <option>تجارة</option>
-        <option>تعليم</option>
-        <option>صناعة</option>
-        <option>خدمات</option>
-        <option>نقل</option>
-        <option>صحة</option>
-        <option>أخرى</option>
-      </select>
+    </div>
 
-      <label for="description">وصف الوظيفة</label>
-      <textarea
-        id="description"
-        placeholder="اكتب تفاصيل الوظيفة..."
-        required
-      ></textarea>
+  </div>
 
-      <button type="submit">
+  <br>
+
+  <div id="searchJobs" class="jobs"></div>
+
+</section>
+
+
+<!-- ================= المفضلة ================= -->
+
+<section id="favorites" class="page">
+
+  <div class="card">
+
+    <div class="section-head">
+      <h2>الفرص المفضلة ⭐</h2>
+    </div>
+
+    <div id="favoriteJobs" class="jobs"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= نشر فرصة ================= -->
+
+<section id="publish" class="page">
+
+  <div class="card">
+
+    <h2 style="margin-bottom:20px">
+      نشر فرصة عمل
+    </h2>
+
+    <form id="jobForm" class="form">
+
+      <div class="row">
+
+        <label>
+          عنوان الوظيفة
+          <input
+            id="jobTitle"
+            required
+            placeholder="مثال: سائق شاحنة"
+          >
+        </label>
+
+        <label>
+          اسم الشركة
+          <input
+            id="company"
+            required
+            placeholder="اسم الشركة"
+          >
+        </label>
+
+      </div>
+
+
+      <div class="row">
+
+        <label>
+          المكان
+
+          <select id="jobLocation" required>
+
+            <option value="">
+              اختر الولاية
+            </option>
+
+            <option>الجزائر</option>
+            <option>بومرداس</option>
+            <option>تيبازة</option>
+            <option>البليدة</option>
+            <option>وهران</option>
+            <option>قسنطينة</option>
+            <option>سطيف</option>
+            <option>عنابة</option>
+
+          </select>
+
+        </label>
+
+
+        <label>
+          المجال
+
+          <select id="category" required>
+
+            <option value="">
+              اختر المجال
+            </option>
+
+            <option>نقل</option>
+            <option>تجارة</option>
+            <option>تقنية</option>
+            <option>تعليم</option>
+            <option>إدارة</option>
+            <option>صناعة</option>
+            <option>خدمات</option>
+
+          </select>
+
+        </label>
+
+      </div>
+
+
+      <label>
+
+        وصف الفرصة
+
+        <textarea
+          id="description"
+          required
+          placeholder="اكتب تفاصيل فرصة العمل..."
+        ></textarea>
+
+      </label>
+
+
+      <button class="btn primary">
         نشر الفرصة
       </button>
 
     </form>
 
-    <div id="publishMessage" class="message">
-      تم نشر فرصة العمل بنجاح ✅
+  </div>
+
+</section>
+
+
+<!-- ================= لوحة التحكم ================= -->
+
+<section id="dashboard" class="page">
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-title">
+        مجموع الفرص
+      </div>
+
+      <div
+        class="card-number"
+        id="dashboardJobs">
+        0
+      </div>
     </div>
 
-  </section>
+    <div class="card">
 
-  <!-- المفضلة -->
-  <section id="favorites" class="section hidden">
+      <div class="card-title">
+        الفرص المفضلة
+      </div>
 
-    <h2>⭐ المفضلة</h2>
+      <div
+        class="card-number"
+        id="dashboardFavorites">
+        0
+      </div>
 
-    <div id="favoritesList" class="jobs"></div>
+    </div>
 
-    <p id="noFavorites">
-      لم تقم بإضافة أي فرصة إلى المفضلة بعد.
+  </div>
+
+
+  <div class="card">
+
+    <h2>
+      لوحة التحكم
+    </h2>
+
+    <p class="info" style="margin-top:10px">
+      هذه هي النواة الأولى للوحة التحكم.
+      سنضيف إليها إدارة الشركات والمتقدمين
+      والإحصائيات الحقيقية في المراحل القادمة.
     </p>
 
-  </section>
+  </div>
 
-  <!-- الحساب -->
-  <section id="account" class="section hidden">
+</section>
 
-    <h2>👤 حسابي</h2>
 
-    <label for="userName">الاسم</label>
-    <input
-      id="userName"
-      type="text"
-      placeholder="اكتب اسمك"
-    >
+<!-- ================= الإشعارات ================= -->
 
-    <label for="userPhone">رقم الهاتف</label>
-    <input
-      id="userPhone"
-      type="tel"
-      placeholder="اكتب رقم هاتفك"
-    >
+<section id="notifications" class="page">
 
-    <button onclick="saveAccount()">
-      حفظ بياناتي
-    </button>
+  <div class="card">
 
-    <div id="accountMessage" class="message">
-      تم حفظ بياناتك ✅
+    <h2>
+      الإشعارات 🔔
+    </h2>
+
+    <div class="empty">
+      لا توجد إشعارات جديدة.
     </div>
 
-  </section>
+  </div>
+
+</section>
+
+
+<!-- ================= الحساب ================= -->
+
+<section id="account" class="page">
+
+  <div class="card">
+
+    <h2 style="margin-bottom:20px">
+      حسابي 👤
+    </h2>
+
+    <form id="accountForm" class="form">
+
+      <label>
+        الاسم
+        <input
+          id="name"
+          placeholder="اكتب اسمك"
+        >
+      </label>
+
+
+      <label>
+        رقم الهاتف
+        <input
+          id="phone"
+          type="tel"
+          placeholder="رقم الهاتف"
+        >
+      </label>
+
+
+      <button class="btn primary">
+        حفظ بياناتي
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<!-- ================= الإعدادات ================= -->
+
+<section id="settings" class="page">
+
+  <div class="card">
+
+    <h2>
+      الإعدادات ⚙️
+    </h2>
+
+    <div class="empty">
+      إعدادات اللغة والإشعارات والحساب
+      سنضيفها في المرحلة التالية.
+    </div>
+
+  </div>
+
+</section>
 
 </main>
 
-<!-- شريط التنقل -->
-<nav class="bottom-nav">
+</div>
 
-  <button
-    class="nav-btn active"
-    onclick="showSection('home')">
-    🏠<br>الرئيسية
-  </button>
 
-  <button
-    class="nav-btn"
-    onclick="showSection('search')">
-    🔎<br>بحث
-  </button>
+<div class="toast" id="toast"></div>
 
-  <button
-    class="nav-btn"
-    onclick="showSection('favorites')">
-    ⭐<br>مفضلة
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showSection('account')">
-    👤<br>حسابي
-  </button>
-
-</nav>
-
-<div id="toast" class="toast"></div>
 
 <script>
 
-  let favorites =
-    JSON.parse(localStorage.getItem("forsatiFavorites") || "[]");
+/* ================= البيانات ================= */
 
-  function showSection(sectionId) {
+let jobs =
+JSON.parse(
+  localStorage.getItem("forsatiJobs")
+) || [
 
-    const sections = [
-      "home",
-      "search",
-      "publish",
-      "favorites",
-      "account"
-    ];
+  {
+    id:1,
+    title:"سائق شاحنة صغيرة",
+    company:"سناكوم",
+    location:"بومرداس",
+    category:"نقل",
+    description:"فرصة عمل لسائق شاحنة صغيرة."
+  },
 
-    sections.forEach(function(id) {
-
-      const section = document.getElementById(id);
-
-      if (section) {
-        section.classList.add("hidden");
-      }
-
-    });
-
-    const selected =
-      document.getElementById(sectionId);
-
-    if (selected) {
-      selected.classList.remove("hidden");
-    }
-
-    document.querySelectorAll(".nav-btn").forEach(function(btn) {
-      btn.classList.remove("active");
-    });
-
-    const buttons =
-      document.querySelectorAll(".nav-btn");
-
-    const index = {
-      home: 0,
-      search: 1,
-      favorites: 2,
-      account: 3
-    };
-
-    if (index[sectionId] !== undefined) {
-      buttons[index[sectionId]].classList.add("active");
-    }
-
-    if (sectionId === "favorites") {
-      renderFavorites();
-    }
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+  {
+    id:2,
+    title:"مساعد تجاري",
+    company:"شركة خاصة",
+    location:"الجزائر",
+    category:"تجارة",
+    description:"مطلوب مساعد تجاري للعمل بدوام كامل."
   }
 
-  function searchJobs() {
+];
 
-    const input =
-      document.getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
 
-    document.querySelectorAll(".job").forEach(function(job) {
+let favorites =
+JSON.parse(
+  localStorage.getItem("forsatiFavorites")
+) || [];
 
-      const text =
-        (job.getAttribute("data-search") || "")
-          .toLowerCase();
 
-      job.style.display =
-        text.includes(input) ? "block" : "none";
+let applications =
+JSON.parse(
+  localStorage.getItem("forsatiApplications")
+) || [];
 
-    });
-  }
 
-  function applyJob(jobName) {
+/* ================= الحفظ ================= */
 
-    const name = prompt("اكتب اسمك:");
+function saveData(){
 
-    if (!name) {
-      return;
-    }
+  localStorage.setItem(
+    "forsatiJobs",
+    JSON.stringify(jobs)
+  );
 
-    const phone = prompt("اكتب رقم هاتفك:");
+  localStorage.setItem(
+    "forsatiFavorites",
+    JSON.stringify(favorites)
+  );
 
-    if (!phone) {
-      return;
-    }
-const applications =
-  JSON.parse(localStorage.getItem("forsatiApplications") || "[]");
+  localStorage.setItem(
+    "forsatiApplications",
+    JSON.stringify(applications)
+  );
 
-applications.unshift({
-  jobName: jobName,
-  name: name,
-  phone: phone,
-  date: new Date().toISOString()
-});
+}
 
-localStorage.setItem(
-  "forsatiApplications",
-  JSON.stringify(applications)
-);
-    showToast(
-      "تم تسجيل طلبك لوظيفة " +
-      jobName +
-      " بنجاح ✅"
-    );
-  }
 
-  function toggleFavorite(id, button) {
+/* ================= التنقل ================= */
 
-    if (favorites.includes(id)) {
+const titles = {
 
-      favorites =
-        favorites.filter(function(item) {
-          return item !== id;
-        });
+  home:"الرئيسية",
 
-      button.classList.remove("saved");
-      button.textContent = "⭐ إضافة للمفضلة";
+  search:"البحث عن الفرص",
 
-      showToast("تمت إزالة الفرصة من المفضلة");
+  favorites:"المفضلة",
 
-    } else {
+  publish:"نشر فرصة",
 
-      favorites.push(id);
+  dashboard:"لوحة التحكم",
 
-      button.classList.add("saved");
-      button.textContent = "⭐ تمت الإضافة";
+  notifications:"الإشعارات",
 
-      showToast("تمت إضافة الفرصة للمفضلة");
+  account:"حسابي",
 
-    }
+  settings:"الإعدادات"
 
-    localStorage.setItem(
-      "forsatiFavorites",
-      JSON.stringify(favorites)
-    );
+};
 
-    renderFavorites();
-  }
 
-  function renderFavorites() {
-
-    const list =
-      document.getElementById("favoritesList");
-
-    const empty =
-      document.getElementById("noFavorites");
-
-    list.innerHTML = "";
-
-    if (favorites.length === 0) {
-
-      empty.style.display = "block";
-      return;
-
-    }
-
-    empty.style.display = "none";
-
-    favorites.forEach(function(id) {
-
-      const original =
-        document.querySelector(
-          '.job[data-id="' + id + '"]'
-        );
-
-      if (!original) {
-        return;
-      }
-
-      const copy =
-        original.cloneNode(true);
-
-      list.appendChild(copy);
-
-    });
-  }
+function openPage(id,button){
 
   document
-    .getElementById("jobForm")
-    .addEventListener("submit", function(event) {
+    .querySelectorAll(".page")
+    .forEach(
+      page => page.classList.remove("active")
+    );
+
+
+  document
+    .getElementById(id)
+    .classList.add("active");
+
+
+  document.getElementById(
+    "pageTitle"
+  ).textContent = titles[id];
+
+
+  document
+    .querySelectorAll(".menu button")
+    .forEach(
+      b => b.classList.remove("active")
+    );
+
+
+  if(button){
+    button.classList.add("active");
+  }
+
+
+  document
+    .getElementById("sidebar")
+    .classList.remove("open");
+
+
+  render();
+
+}
+
+
+/* ================= القائمة الهاتف ================= */
+
+function toggleMenu(){
+
+  document
+    .getElementById("sidebar")
+    .classList.toggle("open");
+
+}
+
+
+/* ================= حماية النص ================= */
+
+function escapeHTML(text){
+
+  return String(text).replace(
+    /[&<>"']/g,
+
+    function(char){
+
+      return {
+
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+
+      }[char];
+
+    }
+
+  );
+
+}
+
+
+/* ================= بطاقة الفرصة ================= */
+
+function createJobCard(job){
+
+  const isFavorite =
+    favorites.includes(job.id);
+
+
+  return `
+
+    <div class="card job">
+
+      <div>
+
+        <h3>
+          ${escapeHTML(job.title)}
+        </h3>
+
+        <div class="info">
+
+          🏢 ${escapeHTML(job.company)}
+
+          <br>
+
+          📍 ${escapeHTML(job.location)}
+
+          ·
+
+          📂 ${escapeHTML(job.category)}
+
+        </div>
+
+        <div class="info">
+          ${escapeHTML(job.description)}
+        </div>
+
+      </div>
+
+
+      <div class="actions">
+
+        <button
+          class="btn secondary"
+          onclick="toggleFavorite(${job.id})">
+
+          ${isFavorite ? "★" : "☆"}
+          مفضلة
+
+        </button>
+
+
+        <button
+          class="btn primary"
+          onclick="applyJob(${job.id})">
+
+          تقديم
+
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* ================= عرض البيانات ================= */
+
+function render(){
+
+  document.getElementById(
+    "jobCount"
+  ).textContent = jobs.length;
+
+
+  document.getElementById(
+    "favoriteCount"
+  ).textContent = favorites.length;
+
+
+  document.getElementById(
+    "applicationCount"
+  ).textContent = applications.length;
+
+
+  document.getElementById(
+    "dashboardJobs"
+  ).textContent = jobs.length;
+
+
+  document.getElementById(
+    "dashboardFavorites"
+  ).textContent = favorites.length;
+
+
+  const latest =
+    jobs
+      .slice()
+      .reverse()
+      .slice(0,5);
+
+
+  document.getElementById(
+    "homeJobs"
+  ).innerHTML =
+
+    latest.length
+
+      ? latest.map(createJobCard).join("")
+
+      : `<div class="empty">
+          لا توجد فرص حاليًا.
+        </div>`;
+
+
+  renderSearch();
+
+  renderFavorites();
+
+}
+
+
+/* ================= البحث ================= */
+
+function renderSearch(){
+
+  const text =
+    document
+      .getElementById("searchInput")
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  const location =
+    document
+      .getElementById("locationFilter")
+      .value;
+
+
+  const results =
+    jobs.filter(function(job){
+
+      const searchMatch =
+
+        !text ||
+
+        (
+          job.title +
+          " " +
+          job.company +
+          " " +
+          job.category
+        )
+        .toLowerCase()
+        .includes(text);
+
+
+      const locationMatch =
+
+        !location ||
+
+        job.location === location;
+
+
+      return searchMatch && locationMatch;
+
+    });
+
+
+  document.getElementById(
+    "searchJobs"
+  ).innerHTML =
+
+    results.length
+
+      ? results.map(createJobCard).join("")
+
+      : `<div class="card empty">
+          لم نجد فرصًا مطابقة للبحث.
+        </div>`;
+
+}
+
+
+/* ================= المفضلة ================= */
+
+function renderFavorites(){
+
+  const favJobs =
+    jobs.filter(
+      job => favorites.includes(job.id)
+    );
+
+
+  document.getElementById(
+    "favoriteJobs"
+  ).innerHTML =
+
+    favJobs.length
+
+      ? favJobs.map(createJobCard).join("")
+
+      : `<div class="empty">
+          لم تضف أي فرصة إلى المفضلة.
+        </div>`;
+
+}
+
+
+/* ================= إضافة للمفضلة ================= */
+
+function toggleFavorite(id){
+
+  if(
+    favorites.includes(id)
+  ){
+
+    favorites =
+      favorites.filter(
+        item => item !== id
+      );
+
+    showToast(
+      "تم حذف الفرصة من المفضلة"
+    );
+
+  }else{
+
+    favorites.push(id);
+
+    showToast(
+      "تمت إضافة الفرصة للمفضلة ⭐"
+    );
+
+  }
+
+
+  saveData();
+
+  render();
+
+}
+
+
+/* ================= التقديم ================= */
+
+function applyJob(id){
+
+  if(
+    !applications.includes(id)
+  ){
+
+    applications.push(id);
+
+    saveData();
+
+    render();
+
+    showToast(
+      "تم تسجيل طلب التقديم ✅"
+    );
+
+  }else{
+
+    showToast(
+      "لقد قدمت على هذه الفرصة مسبقًا"
+    );
+
+  }
+
+}
+
+
+/* ================= نشر فرصة ================= */
+
+document
+  .getElementById("jobForm")
+  .addEventListener(
+    "submit",
+
+    function(event){
 
       event.preventDefault();
 
-      const title =
-        document.getElementById("jobTitle")
-          .value.trim();
 
-      const company =
-        document.getElementById("company")
-          .value.trim();
+      const newJob = {
 
-      const location =
-        document.getElementById("location")
-          .value;
+        id:Date.now(),
 
-      const category =
-        document.getElementById("category")
-          .value;
+        title:
+          document
+            .getElementById("jobTitle")
+            .value
+            .trim(),
 
-      const description =
-        document.getElementById("description")
-          .value.trim();
+        company:
+          document
+            .getElementById("company")
+            .value
+            .trim(),
 
-      if (
-        !title ||
-        !company ||
-        !location ||
-        !category ||
-        !description
-      ) {
+        location:
+          document
+            .getElementById("jobLocation")
+            .value,
 
-        showToast(
-          "يرجى ملء جميع المعلومات"
-        );
+        category:
+          document
+            .getElementById("category")
+            .value,
 
-        return;
-      }
+        description:
+          document
+            .getElementById("description")
+            .value
+            .trim()
 
-      const id =
-        "userjob_" + Date.now();
+      };
 
-      const job =
-        document.createElement("div");
 
-      job.className = "job";
+      jobs.push(newJob);
 
-      job.setAttribute("data-id", id);
+      saveData();
 
-      job.setAttribute(
-        "data-search",
-        title + " " +
-        company + " " +
-        location + " " +
-        category
-      );
+      this.reset();
 
-      job.innerHTML = `
-        <h3>${escapeHTML(title)}</h3>
-        <p>🏢 الشركة: ${escapeHTML(company)}</p>
-        <p>📍 المكان: ${escapeHTML(location)}</p>
-        <p>📂 المجال: ${escapeHTML(category)}</p>
-        <p>${escapeHTML(description)}</p>
-
-        <button onclick="applyJob('${escapeJS(title)}')">
-          تقديم
-        </button>
-
-        <button
-          class="favorite-btn"
-          onclick="toggleFavorite('${id}', this)">
-          ⭐ إضافة للمفضلة
-        </button>
-      `;
-const savedJobs =
-  JSON.parse(localStorage.getItem("forsatiJobs") || "[]");
-
-savedJobs.unshift({
-  id: id,
-  title: title,
-  company: company,
-  location: location,
-  category: category,
-  description: description,
-  ownerName: localStorage.getItem("forsatiName") || "",
-  ownerPhone: localStorage.getItem("forsatiPhone") || ""
-});
-
-localStorage.setItem(
-  "forsatiJobs",
-  JSON.stringify(savedJobs)
-);
-      document
-        .getElementById("jobsList")
-        .prepend(job);
-
-      document
-        .getElementById("jobForm")
-        .reset();
-
-      document
-        .getElementById("publishMessage")
-        .style.display = "block";
-
-      showToast("تم نشر الفرصة بنجاح ✅");
-
-      setTimeout(function() {
-
-        document
-          .getElementById("publishMessage")
-          .style.display = "none";
-
-      }, 3000);
-
-      showSection("search");
-    });
-
-  function saveAccount() {
-
-    const name =
-      document.getElementById("userName")
-        .value.trim();
-
-    const phone =
-      document.getElementById("userPhone")
-        .value.trim();
-
-    if (!name || !phone) {
+      render();
 
       showToast(
-        "يرجى كتابة الاسم ورقم الهاتف"
+        "تم نشر فرصة العمل بنجاح ✅"
       );
 
-      return;
+
+      openPage("home");
+
     }
 
-    localStorage.setItem(
-      "forsatiName",
-      name
-    );
+  );
 
-    localStorage.setItem(
-      "forsatiPhone",
-      phone
-    );
 
-    document
-      .getElementById("accountMessage")
-      .style.display = "block";
+/* ================= الحساب ================= */
 
-    showToast("تم حفظ بياناتك ✅");
+document
+  .getElementById("accountForm")
+  .addEventListener(
+    "submit",
 
-  }
+    function(event){
 
-  function escapeHTML(text) {
+      event.preventDefault();
 
-    const div =
-      document.createElement("div");
 
-    div.textContent = text;
+      const name =
+        document
+          .getElementById("name")
+          .value
+          .trim();
 
-    return div.innerHTML;
-  }
 
-  function escapeJS(text) {
+      const phone =
+        document
+          .getElementById("phone")
+          .value
+          .trim();
 
-    return text
-      .replace(/\\/g, "\\\\")
-      .replace(/'/g, "\\'")
-      .replace(/"/g, '\\"');
-  }
 
-  function showToast(message) {
+      localStorage.setItem(
+        "forsatiName",
+        name
+      );
 
-    const toast =
-      document.getElementById("toast");
 
-    toast.textContent = message;
+      localStorage.setItem(
+        "forsatiPhone",
+        phone
+      );
 
-    toast.style.display = "block";
 
-    setTimeout(function() {
+      document.getElementById(
+        "userName"
+      ).textContent =
+        name || "زائر";
 
-      toast.style.display = "none";
 
-    }, 3000);
-  }
+      showToast(
+        "تم حفظ بياناتك ✅"
+      );
 
-  /* استرجاع بيانات الحساب */
-  document.getElementById("userName").value =
-    localStorage.getItem("forsatiName") || "";
-
-  document.getElementById("userPhone").value =
-    localStorage.getItem("forsatiPhone") || "";
-
-  /* استرجاع حالة المفضلة */
-  document.querySelectorAll(".job").forEach(function(job) {
-
-    const id = job.getAttribute("data-id");
-
-    if (favorites.includes(id)) {
-
-      const button =
-        job.querySelector(".favorite-btn");
-
-      if (button) {
-
-        button.classList.add("saved");
-        button.textContent = "⭐ تمت الإضافة";
-
-      }
     }
-  });
 
-</script>
+  );
 
-</body>
-        </html>
+
+/* ================= البحث المباشر ================= */
+
+document
+  .getElementById("searchInput")
+  .addEventListener(
+    "input",
+    renderSearch
+  );
+
+
+document
+  .getElementById("locationFilter")
+  .addEventListener(
+    "change",
+    renderSearch
+  );
+
+
+/* ================= الإشعار ================= */
+
+function showToast(message){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  toast.textContent = message;
+
+  toast.style.display =
+    "block";
+
+
+  setTimeout(
+    function(){
+
+      toast.style.display =
+        "none";
+
+    },
+
+    2500
+  );
+
+}
+
+
+/* ================= تحميل الحساب ================= */
+
+const savedName =
+  localStorage.getItem(
+    "forsatiName"
+  );
+
+
+const savedPhone =
+  localStorage.getItem(
+    "forsatiPhone"
+  );
+
+
+if(savedName){
+
+  document.getElementById(
+    "userName"
+  ).textContent =
+    savedName;
+
+  document.getElementById(
+    "name"
+  ).value =
+    savedName;
+
+}
+
+
+if(savedPhone){
+
+  document.getElementById(
+    "p
