@@ -13,6 +13,16 @@
   font-family:Arial,Tahoma,sans-serif;
 }
 
+:root{
+  --blue:#1769e0;
+  --blue-dark:#0d57c7;
+  --blue-light:#eaf2ff;
+  --red:#e53935;
+  --red-light:#ffeded;
+  --white:#ffffff;
+  --border:#e4e9f2;
+}
+
 body{
   background:#f5f6fa;
   color:#202535;
@@ -30,7 +40,7 @@ body{
 .sidebar{
   width:250px;
   background:#ffffff;
-  border-left:1px solid #e5e7ee;
+  border-left:1px solid var(--border);
   padding:22px 15px;
   position:fixed;
   right:0;
@@ -44,6 +54,7 @@ body{
   font-size:28px;
   font-weight:bold;
   margin-bottom:8px;
+  color:var(--blue);
 }
 
 .logo small{
@@ -73,8 +84,8 @@ body{
 
 .menu button:hover,
 .menu button.active{
-  background:#eef0ff;
-  color:#4655d9;
+  background:var(--blue-light);
+  color:var(--blue);
   font-weight:bold;
 }
 
@@ -95,11 +106,12 @@ body{
 
 .topbar h1{
   font-size:26px;
+  color:#202535;
 }
 
 .account-mini{
   background:white;
-  border:1px solid #e5e7ee;
+  border:1px solid var(--border);
   padding:10px 15px;
   border-radius:12px;
 }
@@ -125,10 +137,28 @@ body{
 
 .card{
   background:white;
-  border:1px solid #e5e7ee;
+  border:2px solid var(--border);
   border-radius:16px;
   padding:20px;
-  box-shadow:0 5px 20px rgba(20,30,60,.04);
+  box-shadow:0 5px 20px rgba(20,30,60,.06);
+}
+
+/* مستطيلات الإحصائيات */
+
+.cards .card:nth-child(1){
+  border-top:5px solid var(--blue);
+}
+
+.cards .card:nth-child(2){
+  border-top:5px solid var(--red);
+}
+
+.cards .card:nth-child(3){
+  border-top:5px solid var(--blue);
+}
+
+.cards .card:nth-child(4){
+  border-top:5px solid var(--red);
 }
 
 .card-title{
@@ -140,6 +170,14 @@ body{
   font-size:28px;
   font-weight:bold;
   margin-top:8px;
+}
+
+.cards .card:nth-child(odd) .card-number{
+  color:var(--blue);
+}
+
+.cards .card:nth-child(even) .card-number{
+  color:var(--red);
 }
 
 /* ===== العناوين ===== */
@@ -163,6 +201,16 @@ body{
   justify-content:space-between;
   align-items:center;
   gap:15px;
+}
+
+/* مستطيلات الفرص أزرق وأحمر */
+
+.jobs .job:nth-child(odd){
+  border-right:5px solid var(--blue);
+}
+
+.jobs .job:nth-child(even){
+  border-right:5px solid var(--red);
 }
 
 .job h3{
@@ -192,18 +240,27 @@ body{
 }
 
 .primary{
-  background:#4655d9;
+  background:var(--blue);
   color:white;
 }
 
+.primary:hover{
+  background:var(--blue-dark);
+}
+
 .secondary{
-  background:#eef0ff;
-  color:#4655d9;
+  background:var(--blue-light);
+  color:var(--blue);
+}
+
+.secondary:hover{
+  background:var(--blue);
+  color:white;
 }
 
 .danger{
-  background:#ffecec;
-  color:#d33;
+  background:var(--red-light);
+  color:var(--red);
 }
 
 /* ===== النماذج ===== */
@@ -245,7 +302,8 @@ textarea{
 input:focus,
 select:focus,
 textarea:focus{
-  border-color:#6572df;
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(23,105,224,.10);
 }
 
 /* ===== البحث ===== */
@@ -271,7 +329,7 @@ textarea:focus{
   position:fixed;
   bottom:20px;
   left:20px;
-  background:#202535;
+  background:var(--blue);
   color:white;
   padding:13px 18px;
   border-radius:10px;
@@ -423,7 +481,6 @@ textarea:focus{
 
 </header>
 
-
 <!-- ================= الرئيسية ================= -->
 
 <section id="home" class="page active">
@@ -452,7 +509,6 @@ textarea:focus{
 
   </div>
 
-
   <div class="card">
 
     <div class="section-head">
@@ -469,7 +525,6 @@ textarea:focus{
   </div>
 
 </section>
-
 
 <!-- ================= البحث ================= -->
 
@@ -508,7 +563,6 @@ textarea:focus{
 
 </section>
 
-
 <!-- ================= المفضلة ================= -->
 
 <section id="favorites" class="page">
@@ -524,7 +578,6 @@ textarea:focus{
   </div>
 
 </section>
-
 
 <!-- ================= نشر فرصة ================= -->
 
@@ -560,7 +613,6 @@ textarea:focus{
 
       </div>
 
-
       <div class="row">
 
         <label>
@@ -585,7 +637,6 @@ textarea:focus{
 
         </label>
 
-
         <label>
           المجال
 
@@ -609,7 +660,6 @@ textarea:focus{
 
       </div>
 
-
       <label>
 
         وصف الفرصة
@@ -622,8 +672,7 @@ textarea:focus{
 
       </label>
 
-
-      <button class="btn primary">
+      <button type="submit" class="btn primary">
         نشر الفرصة
       </button>
 
@@ -632,7 +681,6 @@ textarea:focus{
   </div>
 
 </section>
-
 
 <!-- ================= لوحة التحكم ================= -->
 
@@ -668,7 +716,6 @@ textarea:focus{
 
   </div>
 
-
   <div class="card">
 
     <h2>
@@ -684,7 +731,6 @@ textarea:focus{
   </div>
 
 </section>
-
 
 <!-- ================= الإشعارات ================= -->
 
@@ -703,7 +749,6 @@ textarea:focus{
   </div>
 
 </section>
-
 
 <!-- ================= الحساب ================= -->
 
@@ -725,7 +770,6 @@ textarea:focus{
         >
       </label>
 
-
       <label>
         رقم الهاتف
         <input
@@ -735,8 +779,7 @@ textarea:focus{
         >
       </label>
 
-
-      <button class="btn primary">
+      <button type="submit" class="btn primary">
         حفظ بياناتي
       </button>
 
@@ -745,7 +788,6 @@ textarea:focus{
   </div>
 
 </section>
-
 
 <!-- ================= الإعدادات ================= -->
 
@@ -770,9 +812,7 @@ textarea:focus{
 
 </div>
 
-
 <div class="toast" id="toast"></div>
-
 
 <script>
 
@@ -803,18 +843,15 @@ JSON.parse(
 
 ];
 
-
 let favorites =
 JSON.parse(
   localStorage.getItem("forsatiFavorites")
 ) || [];
 
-
 let applications =
 JSON.parse(
   localStorage.getItem("forsatiApplications")
 ) || [];
-
 
 /* ================= الحفظ ================= */
 
@@ -837,29 +874,20 @@ function saveData(){
 
 }
 
-
 /* ================= التنقل ================= */
 
 const titles = {
 
   home:"الرئيسية",
-
   search:"البحث عن الفرص",
-
   favorites:"المفضلة",
-
   publish:"نشر فرصة",
-
   dashboard:"لوحة التحكم",
-
   notifications:"الإشعارات",
-
   account:"حسابي",
-
   settings:"الإعدادات"
 
 };
-
 
 function openPage(id,button){
 
@@ -869,16 +897,19 @@ function openPage(id,button){
       page => page.classList.remove("active")
     );
 
+  const page =
+    document.getElementById(id);
 
-  document
-    .getElementById(id)
-    .classList.add("active");
+  if(!page){
+    return;
+  }
 
+  page.classList.add("active");
 
   document.getElementById(
     "pageTitle"
-  ).textContent = titles[id];
-
+  ).textContent =
+    titles[id] || "";
 
   document
     .querySelectorAll(".menu button")
@@ -886,21 +917,17 @@ function openPage(id,button){
       b => b.classList.remove("active")
     );
 
-
   if(button){
     button.classList.add("active");
   }
-
 
   document
     .getElementById("sidebar")
     .classList.remove("open");
 
-
   render();
 
 }
-
 
 /* ================= القائمة الهاتف ================= */
 
@@ -911,7 +938,6 @@ function toggleMenu(){
     .classList.toggle("open");
 
 }
-
 
 /* ================= حماية النص ================= */
 
@@ -938,14 +964,12 @@ function escapeHTML(text){
 
 }
 
-
 /* ================= بطاقة الفرصة ================= */
 
 function createJobCard(job){
 
   const isFavorite =
     favorites.includes(job.id);
-
 
   return `
 
@@ -977,7 +1001,6 @@ function createJobCard(job){
 
       </div>
 
-
       <div class="actions">
 
         <button
@@ -988,7 +1011,6 @@ function createJobCard(job){
           مفضلة
 
         </button>
-
 
         <button
           class="btn primary"
@@ -1006,42 +1028,40 @@ function createJobCard(job){
 
 }
 
-
 /* ================= عرض البيانات ================= */
 
 function render(){
 
   document.getElementById(
     "jobCount"
-  ).textContent = jobs.length;
-
+  ).textContent =
+    jobs.length;
 
   document.getElementById(
     "favoriteCount"
-  ).textContent = favorites.length;
-
+  ).textContent =
+    favorites.length;
 
   document.getElementById(
     "applicationCount"
-  ).textContent = applications.length;
-
+  ).textContent =
+    applications.length;
 
   document.getElementById(
     "dashboardJobs"
-  ).textContent = jobs.length;
-
+  ).textContent =
+    jobs.length;
 
   document.getElementById(
     "dashboardFavorites"
-  ).textContent = favorites.length;
-
+  ).textContent =
+    favorites.length;
 
   const latest =
     jobs
       .slice()
       .reverse()
       .slice(0,5);
-
 
   document.getElementById(
     "homeJobs"
@@ -1055,31 +1075,32 @@ function render(){
           لا توجد فرص حاليًا.
         </div>`;
 
-
   renderSearch();
-
   renderFavorites();
 
 }
-
 
 /* ================= البحث ================= */
 
 function renderSearch(){
 
+  const input =
+    document.getElementById("searchInput");
+
+  const locationSelect =
+    document.getElementById("locationFilter");
+
+  if(!input || !locationSelect){
+    return;
+  }
+
   const text =
-    document
-      .getElementById("searchInput")
-      .value
+    input.value
       .trim()
       .toLowerCase();
 
-
   const location =
-    document
-      .getElementById("locationFilter")
-      .value;
-
+    locationSelect.value;
 
   const results =
     jobs.filter(function(job){
@@ -1098,18 +1119,14 @@ function renderSearch(){
         .toLowerCase()
         .includes(text);
 
-
       const locationMatch =
 
         !location ||
-
         job.location === location;
-
 
       return searchMatch && locationMatch;
 
     });
-
 
   document.getElementById(
     "searchJobs"
@@ -1125,7 +1142,6 @@ function renderSearch(){
 
 }
 
-
 /* ================= المفضلة ================= */
 
 function renderFavorites(){
@@ -1134,7 +1150,6 @@ function renderFavorites(){
     jobs.filter(
       job => favorites.includes(job.id)
     );
-
 
   document.getElementById(
     "favoriteJobs"
@@ -1149,7 +1164,6 @@ function renderFavorites(){
         </div>`;
 
 }
-
 
 /* ================= إضافة للمفضلة ================= */
 
@@ -1178,13 +1192,10 @@ function toggleFavorite(id){
 
   }
 
-
   saveData();
-
   render();
 
 }
-
 
 /* ================= التقديم ================= */
 
@@ -1197,7 +1208,6 @@ function applyJob(id){
     applications.push(id);
 
     saveData();
-
     render();
 
     showToast(
@@ -1214,7 +1224,6 @@ function applyJob(id){
 
 }
 
-
 /* ================= نشر فرصة ================= */
 
 document
@@ -1225,7 +1234,6 @@ document
     function(event){
 
       event.preventDefault();
-
 
       const newJob = {
 
@@ -1261,7 +1269,6 @@ document
 
       };
 
-
       jobs.push(newJob);
 
       saveData();
@@ -1274,13 +1281,11 @@ document
         "تم نشر فرصة العمل بنجاح ✅"
       );
 
-
       openPage("home");
 
     }
 
   );
-
 
 /* ================= الحساب ================= */
 
@@ -1293,13 +1298,11 @@ document
 
       event.preventDefault();
 
-
       const name =
         document
           .getElementById("name")
           .value
           .trim();
-
 
       const phone =
         document
@@ -1307,126 +1310,14 @@ document
           .value
           .trim();
 
-
       localStorage.setItem(
         "forsatiName",
         name
       );
-
 
       localStorage.setItem(
         "forsatiPhone",
         phone
       );
 
-
-      document.getElementById(
-        "userName"
-      ).textContent =
-        name || "زائر";
-
-
-      showToast(
-        "تم حفظ بياناتك ✅"
-      );
-
-    }
-
-  );
-
-
-/* ================= البحث المباشر ================= */
-
-document
-  .getElementById("searchInput")
-  .addEventListener(
-    "input",
-    renderSearch
-  );
-
-
-document
-  .getElementById("locationFilter")
-  .addEventListener(
-    "change",
-    renderSearch
-  );
-
-
-/* ================= الإشعار ================= */
-
-function showToast(message){
-
-  const toast =
-    document.getElementById(
-      "toast"
-    );
-
-
-  toast.textContent = message;
-
-  toast.style.display =
-    "block";
-
-
-  setTimeout(
-    function(){
-
-      toast.style.display =
-        "none";
-
-    },
-
-    2500
-  );
-
-}
-
-
-/* ================= تحميل الحساب ================= */
-
-const savedName =
-  localStorage.getItem(
-    "forsatiName"
-  );
-
-
-const savedPhone =
-  localStorage.getItem(
-    "forsatiPhone"
-  );
-
-
-if(savedName){
-
-  document.getElementById(
-    "userName"
-  ).textContent =
-    savedName;
-
-  document.getElementById(
-    "name"
-  ).value =
-    savedName;
-
-}
-
-
-savedPhone){
-
-  document.getElementById(
-    "phone"
-  ).value =
-    savedPhone;
-
-}
-
-
-/* ================= التشغيل ================= */
-
-render();
-
-</script>
-
-</body>
-</html>
+      document.ge
