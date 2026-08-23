@@ -1319,5 +1319,100 @@ document
         "forsatiPhone",
         phone
       );
+      document.getElementById(
+        "userName"
+      ).textContent =
+        name || "زائر";
 
-      document.ge
+      showToast(
+        "تم حفظ بياناتك ✅"
+      );
+
+    }
+
+  );
+
+/* ================= البحث المباشر ================= */
+
+document
+  .getElementById("searchInput")
+  .addEventListener(
+    "input",
+    renderSearch
+  );
+
+document
+  .getElementById("locationFilter")
+  .addEventListener(
+    "change",
+    renderSearch
+  );
+
+/* ================= الإشعار ================= */
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent =
+    message;
+
+  toast.style.display =
+    "block";
+
+  setTimeout(
+    function(){
+
+      toast.style.display =
+        "none";
+
+    },
+    2500
+  );
+
+}
+
+/* ================= تحميل الحساب ================= */
+
+const savedName =
+  localStorage.getItem(
+    "forsatiName"
+  );
+
+const savedPhone =
+  localStorage.getItem(
+    "forsatiPhone"
+  );
+
+if(savedName){
+
+  document.getElementById(
+    "userName"
+  ).textContent =
+    savedName;
+
+  document.getElementById(
+    "name"
+  ).value =
+    savedName;
+
+}
+
+if(savedPhone){
+
+  document.getElementById(
+    "phone"
+  ).value =
+    savedPhone;
+
+}
+
+/* ================= التشغيل الأول ================= */
+
+render();
+
+</script>
+
+</body>
+</html>
